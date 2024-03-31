@@ -1,5 +1,5 @@
 ## Hi there 👋
-🙋‍♀️ We are the Galaxio team. The name of our team referst to the Isaac Asimov's Galaxia. 
+🙋‍♀️ We are the Galaxio team. The name of our team refers to the Isaac Asimov's Galaxia. 
 Galaxia is a possible future state for the human race in which all planets, all humans, all life, and even non-living organic matter would be incorporated into one single organism.
 
 ## 🌈 Contribution guidelines
