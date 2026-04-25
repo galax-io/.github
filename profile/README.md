@@ -1,6 +1,6 @@
 # ⚡ Galaxio Team
 
-[![Galaxio Team banner](assets/galaxio-team-banner.png)](http://galaxio.org/)
+[![Galaxio Team banner](assets/galaxio-team-banner.svg)](http://galaxio.org/)
 
 **We simplify load testing tooling for modern engineering teams**
 
