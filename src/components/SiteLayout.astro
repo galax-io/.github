@@ -8,6 +8,7 @@ const {
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
+const onHome = pathname === '/';
 ---
 
 <!doctype html>
@@ -37,7 +38,7 @@ const pathname = Astro.url.pathname;
           {navLinks.map((link) => (
             <a
               href={link.href}
-              class:list={{ active: pathname === link.href }}
+              class:list={{ active: onHome && link.href === '/' }}
             >
               {link.label}
             </a>
@@ -55,9 +56,9 @@ const pathname = Astro.url.pathname;
           <p>Load testing tooling, integrations, and practical workflows.</p>
         </div>
         <div class="footer-links">
-          <a href="/products">Products</a>
-          <a href="/team">Team</a>
-          <a href="/community">Community</a>
+          <a href="#products">Products</a>
+          <a href="#team">Team</a>
+          <a href="#community">Community</a>
         </div>
       </footer>
     </div>
