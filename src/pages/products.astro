@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GitHubButton from '../components/GitHubButton.astro';
+import { products } from '../data/site';
+---
+
+<BaseLayout
+  title="Galaxio Team - Products"
+  description="Core and supporting repositories for load testing teams."
+>
+  <section class="hero">
+    <span class="eyebrow">Products</span>
+    <h1 class="display">Core repositories and supporting tooling.</h1>
+    <p class="lede">
+      Our product set is intentionally focused: a small number of tools that
+      solve integration friction, reduce boilerplate, and keep performance test
+      workflows maintainable.
+    </p>
+    <div class="actions">
+      <GitHubButton />
+      <a class="button secondary" href="/community">Community</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Core repositories</span>
+        <h2>The main building blocks.</h2>
+      </div>
+      <p>
+        These are the repos that define the core of the stack and reflect the
+        direction of the org.
+      </p>
+    </div>
+
+    <div class="list">
+      {products
+        .filter((product) => product.tag === 'Core')
+        .map((product) => (
+          <article class="card">
+            <div class="meta">
+              <div>
+                <h3>{product.name}</h3>
+                <p>{product.summary}</p>
+              </div>
+              <a class="button button-sm secondary" href={product.href} target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </div>
+            <p>{product.detail}</p>
+          </article>
+        ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Other repositories</span>
+        <h2>Support tools and starter assets.</h2>
+      </div>
+      <p>
+        These repositories support the ecosystem, onboarding, and repeatable
+        delivery.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      {products
+        .filter((product) => product.tag === 'Other')
+        .map((product) => (
+          <article class="card repo-card">
+            <div class="meta">
+              <span class="badge lime">Support</span>
+              <a href={product.href} class="badge" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </div>
+            <strong>{product.name}</strong>
+            <p>{product.summary}</p>
+            <p class="detail">{product.detail}</p>
+          </article>
+        ))}
+    </div>
+  </section>
+</BaseLayout>

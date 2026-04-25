@@ -1,0 +1,38 @@
+---
+const { size = 72, title = 'Galaxio Team' } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 120 120"
+  role="img"
+  aria-label={title}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id="planet" x1="18" y1="20" x2="96" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7cf7ff" />
+      <stop offset="0.55" stop-color="#4bd8ff" />
+      <stop offset="1" stop-color="#3a6bff" />
+    </linearGradient>
+    <linearGradient id="ring" x1="18" y1="40" x2="104" y2="78" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8cff7a" />
+      <stop offset="1" stop-color="#ffffff" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="44" fill="#091428" stroke="rgba(124,247,255,.24)" stroke-width="2" />
+  <ellipse cx="58" cy="64" rx="48" ry="17" fill="none" stroke="url(#ring)" stroke-width="8" transform="rotate(-24 58 64)" />
+  <circle cx="60" cy="60" r="24" fill="#eef7ff" />
+  <path
+    d="M52 43c11 0 19 8 19 17 0 10-7 18-18 18-7 0-13-3-16-9"
+    fill="none"
+    stroke="#08142a"
+    stroke-width="8"
+    stroke-linecap="round"
+  />
+  <path d="M64 49h12" fill="none" stroke="#08142a" stroke-width="8" stroke-linecap="round" />
+  <circle cx="88" cy="22" r="3.4" fill="#ffffff" />
+  <circle cx="18" cy="76" r="3.4" fill="#7cf7ff" />
+  <circle cx="98" cy="86" r="2.5" fill="#8cff7a" />
+</svg>

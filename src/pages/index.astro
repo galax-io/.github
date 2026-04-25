@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandMark from '../components/BrandMark.astro';
+import GitHubButton from '../components/GitHubButton.astro';
+import { products, people } from '../data/site';
+---
+
+<BaseLayout
+  title="Galaxio Team"
+  description="Practical tooling for load testing teams, plugins, integrations, and contributor-friendly workflows."
+>
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">⚡ Developer tooling for performance teams</span>
+        <h1>Galaxio Team</h1>
+        <p class="lede">
+          We build practical tooling that makes load testing easier to adopt,
+          automate, and maintain.
+          Plugins, integrations, and workflows for Gatling, k6, and adjacent
+          performance-testing ecosystems.
+        </p>
+        <div class="actions">
+          <GitHubButton />
+          <a class="button secondary" href="/products">View Products</a>
+          <a class="button secondary" href="/team">Meet the Team</a>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="signal">
+          <BrandMark size={92} />
+          <strong>One ecosystem, many moving parts.</strong>
+          <p>
+            The idea is simple: keep the toolchain connected, useful, and easy
+            to grow.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Core repositories</span>
+            <span class="pill">Contributors</span>
+            <span class="pill">Priority work</span>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Need something urgent?</strong>
+          <p>
+            Critical features can be prioritized as a paid engagement when
+            shipping speed matters.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">What we build</span>
+        <h2>Products that remove friction from performance testing.</h2>
+      </div>
+      <p>
+        We focus on the parts of load testing that usually cost the most time:
+        setup, integrations, repeatability, and maintenance.
+      </p>
+    </div>
+
+    <div class="grid-4">
+      {products.slice(0, 4).map((product) => (
+        <article class="card repo-card">
+          <div class="meta">
+            <span class="badge">Core</span>
+            <a href={product.href} class="badge" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          </div>
+          <div class="name">
+            <strong>{product.name}</strong>
+          </div>
+          <p>{product.summary}</p>
+          <p class="detail">{product.detail}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">People</span>
+        <h2>A small team with clear roles.</h2>
+      </div>
+      <p>
+        We prefer visible ownership over vague “team” language. Each role has a
+        clear lane, even when the group is intentionally small.
+      </p>
+    </div>
+
+    <div class="people-grid">
+      {people.map((person) => (
+        <article class="person">
+          <div class={`avatar ${person.accent}`}>{person.initials}</div>
+          <span class="role">{person.role}</span>
+          <strong>{person.name}</strong>
+          <p>{person.bio}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Community</span>
+        <h2>Built with contributors, maintainers, and users.</h2>
+      </div>
+      <p>
+        We welcome issues, ideas, documentation improvements, and integrations
+        that help the ecosystem grow.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <strong>Browse the code</strong>
+        <p>See the repositories, understand how they fit together, and follow the evolution.</p>
+      </article>
+      <article class="card">
+        <strong>Improve the docs</strong>
+        <p>Small documentation fixes are often the fastest way to make a product easier to adopt.</p>
+      </article>
+      <article class="card">
+        <strong>Share integrations</strong>
+        <p>If you use Gatling, k6, or adjacent tools in a new way, that context helps us shape the roadmap.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

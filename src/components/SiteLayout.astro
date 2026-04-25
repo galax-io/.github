@@ -1,0 +1,65 @@
+---
+import BrandMark from './BrandMark.astro';
+import { navLinks } from '../data/site';
+
+const {
+  title = 'Galaxio Team',
+  description = 'Practical tooling for load testing teams.',
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#07111f" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/">
+          <BrandMark size={40} />
+          <span>Galaxio Team</span>
+        </a>
+
+        <nav class="nav">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={{ active: pathname === link.href }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="footer">
+        <div>
+          <strong>Galaxio Team</strong>
+          <p>Load testing tooling, integrations, and practical workflows.</p>
+        </div>
+        <div class="footer-links">
+          <a href="/products">Products</a>
+          <a href="/team">Team</a>
+          <a href="/community">Community</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

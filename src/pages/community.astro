@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GitHubButton from '../components/GitHubButton.astro';
+import { contributionPaths } from '../data/site';
+---
+
+<BaseLayout
+  title="Galaxio Team - Community"
+  description="How to contribute, where to follow the project, and how to collaborate."
+>
+  <section class="hero">
+    <span class="eyebrow">Community</span>
+    <h1 class="display">Built with maintainers, contributors, and users.</h1>
+    <p class="lede">
+      We value the people around the project as much as the code itself.
+      Contributions can come from issues, docs, integrations, feedback, or core
+      engineering work.
+    </p>
+    <div class="actions">
+      <GitHubButton />
+      <a class="button secondary" href="/products">Products</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Ways to contribute</span>
+        <h2>Several entry points, depending on what you do best.</h2>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      {contributionPaths.map((item) => (
+        <article class="card">
+          <strong>{item.title}</strong>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="callout">
+      <strong>Priority work</strong>
+      <p>
+        Need something urgent? We can prioritize a critical feature as a paid
+        engagement when speed matters more than queue time.
+      </p>
+      <div class="actions">
+        <GitHubButton />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

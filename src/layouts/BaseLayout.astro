@@ -1,0 +1,10 @@
+---
+import '../styles/global.css';
+import SiteLayout from '../components/SiteLayout.astro';
+
+const { title, description } = Astro.props;
+---
+
+<SiteLayout title={title} description={description}>
+  <slot />
+</SiteLayout>
