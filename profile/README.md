@@ -1,7 +1,5 @@
 # ⚡ Galaxio Team
 
-[![Galaxio Team banner](assets/galaxio-team-banner.svg)](http://galaxio.org/)
-
 **We simplify load testing tooling for modern engineering teams**
 
 Build plugins, integrations, and practical workflows for Gatling, k6, and adjacent performance-testing ecosystems.
