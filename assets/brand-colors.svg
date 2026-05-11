@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="900" height="220" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="220" fill="#ffffff"/>
+
+  <!-- Black swatch -->
+  <rect x="40" y="30" width="240" height="80" rx="40" ry="40" fill="#000000"/>
+  <text x="40" y="140" font-size="13" fill="#555555">R-0</text>
+  <text x="40" y="157" font-size="13" fill="#555555">G-0</text>
+  <text x="40" y="174" font-size="13" fill="#555555">B-0</text>
+  <text x="80" y="157" font-size="22" font-weight="600" fill="#111111">#000000</text>
+
+  <!-- Gray swatch -->
+  <rect x="330" y="30" width="240" height="80" rx="40" ry="40" fill="#ECECEC"/>
+  <text x="330" y="140" font-size="13" fill="#555555">R-236</text>
+  <text x="330" y="157" font-size="13" fill="#555555">G-236</text>
+  <text x="330" y="174" font-size="13" fill="#555555">B-236</text>
+  <text x="380" y="157" font-size="22" font-weight="600" fill="#111111">#ECECEC</text>
+
+  <!-- Blue swatch -->
+  <rect x="620" y="30" width="240" height="80" rx="40" ry="40" fill="#0000FF"/>
+  <text x="620" y="140" font-size="13" fill="#555555">R-0</text>
+  <text x="620" y="157" font-size="13" fill="#555555">G-0</text>
+  <text x="620" y="174" font-size="13" fill="#555555">B-255</text>
+  <text x="660" y="157" font-size="22" font-weight="600" fill="#111111">#0000FF</text>
+</svg>
