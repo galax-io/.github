@@ -1,4 +1,4 @@
-# ⚡ Galaxio Team
+# Galaxio Team
 
 <p align="center">
   <picture>
@@ -13,8 +13,6 @@
   Plugins, integrations, and practical workflows for Gatling, k6, and adjacent performance-testing ecosystems.
 </p>
 
-> 🚀 Performance testing, without the toolchain friction
-
 <p align="center">
   <a href="https://github.com/galax-io"><img src="https://img.shields.io/badge/GitHub-galax--io-181717?logo=github" alt="GitHub" /></a>
   <a href="https://galaxio.org"><img src="https://img.shields.io/badge/site-galaxio.org-0000FF" alt="Site" /></a>
@@ -22,25 +20,20 @@
 
 ---
 
-## ✨ What we do
+### What we do
 
-- 🔌 Build plugins for Gatling, k6, and related tooling
-- 🧩 Design integrations that make load testing easier to adopt
-- 🛠️ Improve workflows for performance engineering teams
-- 📦 Reduce complexity in setup, automation, and maintenance
+- Build plugins for Gatling, k6, and related tooling
+- Design integrations that make load testing easier to adopt
+- Improve workflows for performance engineering teams
+- Reduce complexity in setup, automation, and maintenance
 
-## 🎯 Our focus
+### Our focus
 
-We help teams move faster with:
-
-- cleaner load-testing toolchains
-- more reliable automation
-- easier maintenance for testing infrastructure
-- practical improvements that fit real delivery workflows
+We help teams move faster with cleaner load-testing toolchains, more reliable automation, easier maintenance for testing infrastructure, and practical improvements that fit real delivery workflows.
 
 ---
 
-## 🧩 Core plugins
+### Core plugins
 
 | Repository | Version | Description |
 | :-- | :-- | :-- |
@@ -49,7 +42,7 @@ We help teams move faster with:
 | [gatling-amqp-plugin](https://github.com/galax-io/gatling-amqp-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-amqp-plugin)](https://github.com/galax-io/gatling-amqp-plugin/releases) | Plugin for performance testing with AMQP in Gatling. |
 | [gatling-picatinny](https://github.com/galax-io/gatling-picatinny) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-picatinny)](https://github.com/galax-io/gatling-picatinny/releases) | Extensions and utility functions that make Gatling DSL more practical. |
 
-## 🚀 Platform & tooling
+### Platform & tooling
 
 | Repository | Version | Description |
 | :-- | :-- | :-- |
@@ -58,7 +51,7 @@ We help teams move faster with:
 | [galaxio-template-registry](https://github.com/galax-io/galaxio-template-registry) | [![Release](https://img.shields.io/github/v/release/galax-io/galaxio-template-registry)](https://github.com/galax-io/galaxio-template-registry/releases) | Registry of project templates for quick bootstrapping. |
 | [templates-gatling](https://github.com/galax-io/templates-gatling) | [![Release](https://img.shields.io/github/v/release/galax-io/templates-gatling)](https://github.com/galax-io/templates-gatling/releases) | Ready-to-use Gatling project templates. |
 
-## 🛠️ Infrastructure
+### Infrastructure
 
 | Repository | Version | Description |
 | :-- | :-- | :-- |
@@ -66,7 +59,7 @@ We help teams move faster with:
 | [docker-images](https://github.com/galax-io/docker-images) | — | Docker images maintained by Galaxio Team. |
 
 <details>
-<summary>📦 Archived</summary>
+<summary>Archived</summary>
 
 | Repository | Description |
 | :-- | :-- |
@@ -76,18 +69,18 @@ We help teams move faster with:
 
 ---
 
-## 🧠 Why Galaxio
+### Why Galaxio
 
 The name **Galaxio** comes from Isaac Asimov's **Galaxia**.
 
 Galaxia describes a future state where all planets, all humans, all life, and even non-living organic matter are incorporated into one single organism. We liked the idea because it reflects coordination, scale, and systems working together as one.
 
-## ⚡ Priority work
+### Priority work
 
 If you need a critical feature delivered fast, we can prioritize it as a paid engagement.
 That is the fastest path for urgent work when shipping quickly matters more than waiting in the regular queue.
 
-## 🤝 Contributing
+### Contributing
 
 We welcome ideas, issues, and contributions.
 If you are working on load testing infrastructure and see room for improvement, feel free to reach out or open an issue.
