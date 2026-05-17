@@ -33,30 +33,35 @@ We help teams move faster with cleaner load-testing toolchains, more reliable au
 
 ---
 
-### Core plugins
+### Plugins
 
 | Repository | Version | Description |
 | :-- | :-- | :-- |
-| [gatling-kafka-plugin](https://github.com/galax-io/gatling-kafka-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-kafka-plugin)](https://github.com/galax-io/gatling-kafka-plugin/releases) | Gatling protocol plugin for supporting Kafka. |
-| [gatling-jdbc-plugin](https://github.com/galax-io/gatling-jdbc-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-jdbc-plugin)](https://github.com/galax-io/gatling-jdbc-plugin/releases) | Simple Gatling plugin for JDBC. |
-| [gatling-amqp-plugin](https://github.com/galax-io/gatling-amqp-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-amqp-plugin)](https://github.com/galax-io/gatling-amqp-plugin/releases) | Plugin for performance testing with AMQP in Gatling. |
-| [gatling-picatinny](https://github.com/galax-io/gatling-picatinny) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-picatinny)](https://github.com/galax-io/gatling-picatinny/releases) | Extensions and utility functions that make Gatling DSL more practical. |
+| [gatling-kafka-plugin](https://github.com/galax-io/gatling-kafka-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-kafka-plugin)](https://github.com/galax-io/gatling-kafka-plugin/releases) | Gatling plugin for Apache Kafka — produce, request-reply, and consume with Avro, Protobuf, Schema Registry. |
+| [gatling-jdbc-plugin](https://github.com/galax-io/gatling-jdbc-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-jdbc-plugin)](https://github.com/galax-io/gatling-jdbc-plugin/releases) | Gatling plugin for JDBC — SQL queries, batch operations, stored procedures with HikariCP. |
+| [gatling-amqp-plugin](https://github.com/galax-io/gatling-amqp-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-amqp-plugin)](https://github.com/galax-io/gatling-amqp-plugin/releases) | Gatling plugin for AMQP/RabbitMQ — publish, request-reply, and consume patterns. |
+| [gatling-picatinny](https://github.com/galax-io/gatling-picatinny) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-picatinny)](https://github.com/galax-io/gatling-picatinny/releases) | Gatling DSL extensions — feeders, transactions, assertions, Redis, and utilities. |
 
-### Platform & tooling
+### AI Skills
 
-| Repository | Version | Description |
-| :-- | :-- | :-- |
-| [galaxio-gatling-pro](https://github.com/galax-io/galaxio-gatling-pro) | — | Galaxio Gatling Pro — enhanced Gatling distribution. |
-| [galaxio-cli](https://github.com/galax-io/galaxio-cli) | [![Release](https://img.shields.io/github/v/release/galax-io/galaxio-cli)](https://github.com/galax-io/galaxio-cli/releases) | Command-line interface for Galaxio tooling. |
-| [galaxio-template-registry](https://github.com/galax-io/galaxio-template-registry) | [![Release](https://img.shields.io/github/v/release/galax-io/galaxio-template-registry)](https://github.com/galax-io/galaxio-template-registry/releases) | Registry of project templates for quick bootstrapping. |
-| [templates-gatling](https://github.com/galax-io/templates-gatling) | [![Release](https://img.shields.io/github/v/release/galax-io/templates-gatling)](https://github.com/galax-io/templates-gatling/releases) | Ready-to-use Gatling project templates. |
+| Repository | Description |
+| :-- | :-- |
+| [galaxio-gatling-pro](https://github.com/galax-io/galaxio-gatling-pro) | Galaxio Gatling Pro — enhanced distribution with AI-powered test generation and analysis. |
 
-### Infrastructure
+### Core / Platform
 
 | Repository | Version | Description |
 | :-- | :-- | :-- |
-| [sbt-schema-registry-plugin](https://github.com/galax-io/sbt-schema-registry-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/sbt-schema-registry-plugin)](https://github.com/galax-io/sbt-schema-registry-plugin/releases) | SBT plugin for downloading schemas from a schema registry. |
-| [docker-images](https://github.com/galax-io/docker-images) | — | Docker images maintained by Galaxio Team. |
+| [galaxio-cli](https://github.com/galax-io/galaxio-cli) | [![Release](https://img.shields.io/github/v/release/galax-io/galaxio-cli)](https://github.com/galax-io/galaxio-cli/releases) | CLI for Galaxio platform — project scaffolding, template management, plugin discovery. |
+| [galaxio-template-registry](https://github.com/galax-io/galaxio-template-registry) | [![Release](https://img.shields.io/github/v/release/galax-io/galaxio-template-registry)](https://github.com/galax-io/galaxio-template-registry/releases) | Template registry — versioned project templates and metadata. |
+| [templates-gatling](https://github.com/galax-io/templates-gatling) | [![Release](https://img.shields.io/github/v/release/galax-io/templates-gatling)](https://github.com/galax-io/templates-gatling/releases) | Ready-to-use Gatling project templates for Scala, Java, and Kotlin. |
+
+### Tooling / Infrastructure
+
+| Repository | Version | Description |
+| :-- | :-- | :-- |
+| [sbt-schema-registry-plugin](https://github.com/galax-io/sbt-schema-registry-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/sbt-schema-registry-plugin)](https://github.com/galax-io/sbt-schema-registry-plugin/releases) | SBT plugin for Confluent Schema Registry — download and generate Avro/Protobuf schemas. |
+| [docker-images](https://github.com/galax-io/docker-images) | — | Docker images for Galaxio CI/CD and local development environments. |
 
 <details>
 <summary>Archived</summary>
