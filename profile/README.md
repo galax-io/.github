@@ -24,6 +24,7 @@
 
 - Build plugins for Gatling, k6, and related tooling
 - Design integrations that make load testing easier to adopt
+- Ship AI agent plugins that bring our practices into Cursor, Claude Code, and Codex
 - Improve workflows for performance engineering teams
 - Reduce complexity in setup, automation, and maintenance
 
@@ -42,11 +43,18 @@ We help teams move faster with cleaner load-testing toolchains, more reliable au
 | [gatling-amqp-plugin](https://github.com/galax-io/gatling-amqp-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-amqp-plugin)](https://github.com/galax-io/gatling-amqp-plugin/releases) | Gatling plugin for AMQP/RabbitMQ — publish, request-reply, and consume patterns. |
 | [gatling-picatinny](https://github.com/galax-io/gatling-picatinny) | [![Release](https://img.shields.io/github/v/release/galax-io/gatling-picatinny)](https://github.com/galax-io/gatling-picatinny/releases) | Gatling DSL extensions — feeders, transactions, assertions, Redis, and utilities. |
 
-### AI Skills
+### AI Plugins
+
+| Repository | Version | Description |
+| :-- | :-- | :-- |
+| [ai-plugins](https://github.com/galax-io/ai-plugins) | [![Release](https://img.shields.io/github/v/release/galax-io/ai-plugins)](https://github.com/galax-io/ai-plugins/releases) | Galaxio Performance Kit — engineering workflows as portable agent plugins for Cursor, Claude Code, and Codex. Includes `galaxio-gatling-pro`. |
+
+### Methodology / Process
 
 | Repository | Description |
 | :-- | :-- |
-| [galaxio-gatling-pro](https://github.com/galax-io/galaxio-gatling-pro) | Galaxio Gatling Pro — enhanced distribution with AI-powered test generation and analysis. |
+| [spec-kit-performance](https://github.com/galax-io/spec-kit-performance) | Spec-driven-development methodology for performance/load testing, built on GitHub spec-kit — constitution, EARS SLOs, gated pipeline. *(research & design)* |
+| [spec-kit-galaxio-bootstrap](https://github.com/galax-io/spec-kit-galaxio-bootstrap) | Copier template for new projects — spec-kit, issue↔PR↔milestone linkage gate, stack-agnostic `AGENTS.md`/`CLAUDE.md`. |
 
 ### Core / Platform
 
@@ -68,6 +76,7 @@ We help teams move faster with cleaner load-testing toolchains, more reliable au
 
 | Repository | Description |
 | :-- | :-- |
+| [galaxio-gatling-pro](https://github.com/galax-io/galaxio-gatling-pro) | Gatling performance-testing skill — moved to [`ai-plugins`](https://github.com/galax-io/ai-plugins) as a plugin in the Galaxio Performance Kit. |
 | [gatling-template.g8](https://github.com/galax-io/gatling-template.g8) | Giter8 template for Gatling projects — superseded by `templates-gatling`. |
 
 </details>
