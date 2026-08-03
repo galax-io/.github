@@ -2,137 +2,457 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandMark from '../components/BrandMark.astro';
 import GitHubButton from '../components/GitHubButton.astro';
-import { products, people } from '../data/site';
+import ProductCard from '../components/Product.astro';
+import { archived, navLinks, orbitLabels, productGroups } from '../data/site';
+
+const marqueeItems = [
+  'Performance engineering',
+  'Gatling · Kafka · JDBC · AMQP',
+  'Cursor · Claude Code · Codex',
+  'Spec-driven load testing',
+  'One organism',
+];
+
+let productIndex = 0;
+const groups = productGroups.map((group) => ({
+  ...group,
+  items: group.items.map((product) => ({ product, index: productIndex++ })),
+}));
 ---
 
 <BaseLayout
-  title="Galaxio Team"
-  description="Practical tooling for load testing teams, plugins, integrations, and contributor-friendly workflows."
+  title="Galaxio — One ecosystem. Many moving parts."
+  description="Galaxio Team builds Gatling plugins, AI agent plugins, a CLI, project templates and a spec-driven methodology for performance testing."
 >
-  <section class="hero">
-    <div class="hero-grid">
-      <div>
-        <span class="eyebrow">⚡ Developer tooling for performance teams</span>
-        <h1>Galaxio Team</h1>
-        <p class="lede">
-          We build practical tooling that makes load testing easier to adopt,
-          automate, and maintain.
-          Plugins, integrations, and workflows for Gatling, k6, and adjacent
-          performance-testing ecosystems.
-        </p>
-        <div class="actions">
-          <GitHubButton />
-          <a class="button secondary" href="#products">View Products</a>
-          <a class="button secondary" href="#team">Meet the Team</a>
-        </div>
+  <div class="page">
+    <!-- ═══════════════════ TOPBAR ═══════════════════ -->
+    <header class="topbar">
+      <a href="#" class="brand" aria-label="Galaxio">
+        <BrandMark class="brand-mark" />
+        <span class="brand-name">Galax<em>io</em><span class="sep">·</span><span class="team">Team</span></span>
+      </a>
+      <nav class="primary">
+        {navLinks.map((link) => <a href={link.href} data-num={link.num}>{link.label}</a>)}
+      </nav>
+      <div class="topbar-actions">
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+          <span class="swatch"></span>
+          <span class="theme-label">Light</span>
+        </button>
+        <GitHubButton />
+      </div>
+    </header>
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section class="hero">
+      <div class="hero-coord-row">
+        <div class="sig">Galaxio Team / Est. <span class="mono">2018</span></div>
+        <div><span class="blink"></span>System status — synchronized</div>
+        <div>v3.0 · ECMA / 2026</div>
       </div>
 
-      <div class="hero-side">
-        <div class="signal">
-          <BrandMark size={92} />
-          <strong>One ecosystem, many moving parts.</strong>
-          <p>
-            The idea is simple: keep the toolchain connected, useful, and easy
-            to grow.
-          </p>
-          <div class="pill-row">
-            <span class="pill">Core repositories</span>
-            <span class="pill">Contributors</span>
-            <span class="pill">Priority work</span>
+      <div class="hero-stage">
+        <div class="hero-text">
+          <div class="hero-eyebrow">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"
+              ><circle cx="6" cy="6" r="5"></circle><circle cx="6" cy="6" r="2" fill="currentColor"></circle></svg
+            >
+            Open-source · Performance engineering
           </div>
-        </div>
-
-        <div class="callout">
-          <strong>Need something urgent?</strong>
-          <p>
-            Critical features can be prioritized as a paid engagement when
-            shipping speed matters.
+          <h1 class="hero-headline">
+            <span class="line">One <span class="blue">eco</span>·</span>
+            <span class="line outlined">system,</span>
+            <span class="line">many moving</span>
+            <span class="line">parts<span class="dot"></span></span>
+          </h1>
+          <p class="hero-lede">
+            We build <em>plugins</em>, a CLI, project templates and portable
+            <em>AI agent</em> plugins for Gatling and adjacent performance-testing ecosystems.
           </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="products">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">What we build</span>
-        <h2>Products that remove friction from performance testing.</h2>
-      </div>
-      <p>
-        We focus on the parts of load testing that usually cost the most time:
-        setup, integrations, repeatability, and maintenance.
-      </p>
-    </div>
-
-    <div class="grid-4">
-      {products.slice(0, 4).map((product) => (
-        <article class="card repo-card">
-          <div class="meta">
-            <span class="badge">Core</span>
-            <a href={product.href} class="badge" target="_blank" rel="noreferrer">
-              GitHub
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#products">
+              Explore the system
+              <svg class="btn-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
+              >
+            </a>
+            <a class="btn btn-ghost" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
+              All repositories
+              <svg class="btn-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
+              >
             </a>
           </div>
-          <div class="name">
-            <strong>{product.name}</strong>
+        </div>
+
+        <!-- Orbital system diagram with Galaxio mark at center -->
+        <div class="orbit-stage" aria-hidden="true">
+          <svg class="orbit-svg" viewBox="0 0 400 400">
+            <!-- inner orbit -->
+            <circle class="orbit-ring" cx="200" cy="200" r="80"></circle>
+            <circle class="orbit-ring dashed" cx="200" cy="200" r="110"></circle>
+            <!-- middle orbit -->
+            <circle class="orbit-ring" cx="200" cy="200" r="142"></circle>
+            <!-- outer orbit -->
+            <circle class="orbit-ring dashed" cx="200" cy="200" r="180"></circle>
+            <circle class="orbit-ring" cx="200" cy="200" r="196"></circle>
+
+            <!-- spinning tick marks -->
+            <g class="orbit-spin">
+              <circle class="orbit-node-blue orbit-node" cx="200" cy="58" r="4"></circle>
+              <circle class="orbit-node" cx="346" cy="200" r="4"></circle>
+              <circle class="orbit-node" cx="100" cy="320" r="3.5"></circle>
+              <circle class="orbit-tick" cx="270" cy="80" r="2"></circle>
+              <circle class="orbit-tick" cx="60" cy="180" r="2"></circle>
+            </g>
+            <g class="orbit-spin reverse">
+              <circle class="orbit-node" cx="60" cy="200" r="4"></circle>
+              <circle class="orbit-node-blue orbit-node" cx="300" cy="320" r="4.5"></circle>
+              <circle class="orbit-tick" cx="190" cy="342" r="2"></circle>
+              <circle class="orbit-tick" cx="330" cy="100" r="2"></circle>
+            </g>
+
+            <!-- crosshair -->
+            <line x1="200" y1="0" x2="200" y2="14" stroke="currentColor" stroke-width="1" opacity="0.3"></line>
+            <line x1="200" y1="386" x2="200" y2="400" stroke="currentColor" stroke-width="1" opacity="0.3"></line>
+            <line x1="0" y1="200" x2="14" y2="200" stroke="currentColor" stroke-width="1" opacity="0.3"></line>
+            <line x1="386" y1="200" x2="400" y2="200" stroke="currentColor" stroke-width="1" opacity="0.3"></line>
+          </svg>
+
+          <!-- center brand mark -->
+          <div class="orbit-mark-wrap"></div>
+          <BrandMark class="orbit-mark" aria-hidden="true" />
+
+          <!-- labels positioned around -->
+          {orbitLabels.map((label, i) => <span class={`orbit-label l${i + 1}`}>{label}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ MARQUEE ═══════════════════ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        {
+          [0, 1].map(() => (
+            <span class="group">
+              {marqueeItems.map((item) => (
+                <>
+                  <span>{item}</span>
+                  <BrandMark class="marquee-mark" />
+                </>
+              ))}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- ═══════════════════ PRODUCTS ═══════════════════ -->
+    <section class="block" id="products">
+      <header class="section-head">
+        <div class="section-tag">
+          <span class="sig"><BrandMark class="mark" /> Index / Products</span>
+          <span class="num">§ <b>01</b> / 04</span>
+        </div>
+        <h2 class="section-title">Twelve repositories. <em>One</em> ecosystem.</h2>
+        <p class="section-kicker">
+          Gatling plugins, AI agent plugins, a CLI, project templates and a spec-driven methodology. Tap any
+          repository to see real usage and open its README.
+        </p>
+      </header>
+
+      <div class="products" id="productsList">
+        {
+          groups.map((group) => (
+            <section class="product-group" id={`group-${group.id}`}>
+              <header class="product-group-head">
+                <h3 class="product-group-label">
+                  <BrandMark class="gmark" />
+                  {group.label}
+                  <span class="product-group-count">{String(group.items.length).padStart(2, '0')}</span>
+                </h3>
+                <span class="product-group-note">{group.note}</span>
+              </header>
+              <div class="products">
+                {group.items.map(({ product, index }) => (
+                  <ProductCard product={product} index={index} open={index === 0} />
+                ))}
+              </div>
+            </section>
+          ))
+        }
+        <section class="archived-note">
+          <span class="archived-label">Archived</span>
+          <ul>
+            {
+              archived.map((repo) => (
+                <li>
+                  <a href={repo.repo} target="_blank" rel="noreferrer">
+                    {repo.name}
+                  </a>
+                  <span>{repo.note}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ COMMUNITY ═══════════════════ -->
+    <section class="block" id="community">
+      <header class="section-head">
+        <div class="section-tag">
+          <span class="sig"><BrandMark class="mark" /> Index / Community</span>
+          <span class="num">§ <b>02</b> / 04</span>
+        </div>
+        <h2 class="section-title">Built with contributors, <em>maintainers</em> and users.</h2>
+        <p class="section-kicker">
+          We welcome issues, ideas, documentation improvements, and integrations that help the ecosystem grow.
+        </p>
+      </header>
+
+      <div class="community-grid">
+        <div class="contribute">
+          <a class="contrib" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
+            <span class="contrib-num">01 / Code</span>
+            <div>
+              <h3>Browse the code</h3>
+              <p>See the repositories, understand how they fit together, and follow the evolution on GitHub.</p>
+            </div>
+            <svg class="contrib-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              ><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
+            >
+          </a>
+          <a class="contrib" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
+            <span class="contrib-num">02 / Docs</span>
+            <div>
+              <h3>Improve the docs</h3>
+              <p>Small documentation fixes are often the fastest way to make a product easier to adopt.</p>
+            </div>
+            <svg class="contrib-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              ><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
+            >
+          </a>
+          <a class="contrib" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
+            <span class="contrib-num">03 / Share</span>
+            <div>
+              <h3>Share integrations</h3>
+              <p>If you use Gatling, k6, or adjacent tools in a new way, that context helps us shape the roadmap.</p>
+            </div>
+            <svg class="contrib-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              ><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
+            >
+          </a>
+          <a class="contrib" href="https://t.me/qa_load" target="_blank" rel="noreferrer">
+            <span class="contrib-num">04 / Talk</span>
+            <div>
+              <h3>Join QA Load on Telegram</h3>
+              <p>The fastest way to reach the team and the wider community of performance engineers.</p>
+            </div>
+            <svg class="contrib-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              ><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
+            >
+          </a>
+        </div>
+
+        <a class="tg-panel" href="https://t.me/qa_load" target="_blank" rel="noreferrer">
+          <svg class="tg-rings" viewBox="0 0 400 400" aria-hidden="true">
+            <g class="tg-spin">
+              <circle cx="200" cy="200" r="60"></circle>
+              <circle class="dashed" cx="200" cy="200" r="100"></circle>
+              <circle cx="200" cy="200" r="140"></circle>
+              <circle class="dashed" cx="200" cy="200" r="180"></circle>
+            </g>
+            <circle cx="200" cy="200" r="200" fill="none" stroke="rgba(255,255,255,0.18)"></circle>
+          </svg>
+          <span class="tg-eye">CH-002 · QA Load · Live</span>
+          <div>
+            <h3 class="tg-headline">The signal everybody <em>tunes into.</em></h3>
+            <p class="tg-body" style="margin-top:24px;">
+              A live community of performance engineers, contributors and Galaxio maintainers. Ask questions,
+              share findings, follow releases — in Russian and English.
+            </p>
           </div>
-          <p>{product.summary}</p>
-          <p class="detail">{product.detail}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="section" id="team">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">People</span>
-        <h2>A small team with clear roles.</h2>
+          <div class="tg-stats">
+            <div class="tg-stat"><span class="num">10k+</span><span class="lbl">Members</span></div>
+            <div class="tg-stat"><span class="num">24/7</span><span class="lbl">Active</span></div>
+            <div class="tg-stat"><span class="num">RU·EN</span><span class="lbl">Languages</span></div>
+          </div>
+          <span class="tg-cta">
+            <svg viewBox="0 0 24 24" fill="currentColor"
+              ><path
+                d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"
+              ></path></svg
+            >
+            t.me/qa_load
+            <span class="handle">↗</span>
+          </span>
+        </a>
       </div>
-      <p>
-        We prefer visible ownership over vague “team” language. Each role has a
-        clear lane, even when the group is intentionally small.
-      </p>
-    </div>
+    </section>
 
-    <div class="people-grid">
-      {people.map((person) => (
-        <article class="person">
-          <div class={`avatar ${person.accent}`}>{person.initials}</div>
-          <span class="role">{person.role}</span>
-          <strong>{person.name}</strong>
-          <p>{person.bio}</p>
-        </article>
-      ))}
-    </div>
-  </section>
+    <!-- ═══════════════════ MANIFESTO / Origin ═══════════════════ -->
+    <section class="manifesto" id="manifesto">
+      <svg class="manifesto-rings" viewBox="0 0 400 400" aria-hidden="true">
+        <g class="manifesto-spin">
+          <circle cx="200" cy="200" r="120"></circle>
+          <circle class="dashed" cx="200" cy="200" r="160"></circle>
+          <circle cx="200" cy="200" r="190"></circle>
+        </g>
+        <g class="manifesto-spin rev">
+          <circle class="blue-orbit dashed" cx="200" cy="200" r="80"></circle>
+        </g>
+      </svg>
 
-  <section class="section" id="community">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Community</span>
-        <h2>Built with contributors, maintainers, and users.</h2>
+      <div class="manifesto-inner">
+        <div>
+          <div class="manifesto-tag">§ 03 / Origin</div>
+          <h2>The name <em>Galaxio</em> comes from Asimov's Galaxia.</h2>
+        </div>
+        <div class="manifesto-body">
+          <p>
+            <b>Galaxia</b> describes a future state where all planets, all humans, all life and even non-living
+            organic matter are incorporated into one single organism.
+          </p>
+          <p>
+            We liked the idea because it reflects what we work on:
+            <b>coordination, scale, and systems working together as one.</b>
+            Plugins, integrations and workflows are the threads that hold a performance-testing toolchain
+            together — the ecosystem is only as strong as the connections between its parts.
+          </p>
+        </div>
       </div>
-      <p>
-        We welcome issues, ideas, documentation improvements, and integrations
-        that help the ecosystem grow.
-      </p>
-    </div>
+      <div class="manifesto-mark" aria-hidden="true">
+        <BrandMark viewBox="0 0 525.68 448.52" />
+      </div>
+    </section>
 
-    <div class="grid-3">
-      <article class="card">
-        <strong>Browse the code</strong>
-        <p>See the repositories, understand how they fit together, and follow the evolution.</p>
-      </article>
-      <article class="card">
-        <strong>Improve the docs</strong>
-        <p>Small documentation fixes are often the fastest way to make a product easier to adopt.</p>
-      </article>
-      <article class="card">
-        <strong>Share integrations</strong>
-        <p>If you use Gatling, k6, or adjacent tools in a new way, that context helps us shape the roadmap.</p>
-      </article>
-    </div>
-  </section>
+    <!-- ═══════════════════ PRIORITY ═══════════════════ -->
+    <section class="priority" id="priority">
+      <div>
+        <div class="section-tag" style="margin-bottom:24px;">
+          <span class="sig"><BrandMark class="mark" /> Index / Priority work</span>
+        </div>
+        <h2>Need something <em>urgent</em>? We can fast-track it.</h2>
+      </div>
+      <div>
+        <p>
+          Critical features and integrations can be prioritized as a paid engagement. That is the fastest path
+          when shipping speed matters more than waiting in the regular queue.
+        </p>
+        <a class="btn btn-primary" href="mailto:hello@galaxio.org">
+          Get in touch
+          <svg class="btn-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
+          >
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <footer>
+      <h2 class="footer-wordmark">Galax<em>io</em><span class="dot">·</span></h2>
+
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="mark-line">
+            <BrandMark />
+            <strong>Galaxio Team</strong>
+          </div>
+          <p>
+            Open-source plugins, agent tooling and workflows for performance testing. Named after Asimov's
+            Galaxia — coordination, scale, systems working as one.
+          </p>
+        </div>
+        <div>
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#manifesto">Origin</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Repositories</h4>
+          <ul>
+            <li><a href="https://github.com/galax-io/galaxio-cli" target="_blank" rel="noreferrer">galaxio-cli</a></li>
+            <li><a href="https://github.com/galax-io/ai-plugins" target="_blank" rel="noreferrer">ai-plugins</a></li>
+            <li>
+              <a href="https://github.com/galax-io/gatling-kafka-plugin" target="_blank" rel="noreferrer">gatling-kafka-plugin</a>
+            </li>
+            <li>
+              <a href="https://github.com/galax-io/gatling-picatinny" target="_blank" rel="noreferrer">gatling-picatinny</a>
+            </li>
+            <li>
+              <a href="https://github.com/galax-io/templates-gatling" target="_blank" rel="noreferrer">templates-gatling</a>
+            </li>
+            <li><a href="https://github.com/galax-io" target="_blank" rel="noreferrer">All on GitHub →</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://t.me/qa_load" target="_blank" rel="noreferrer">Telegram — QA Load</a></li>
+            <li><a href="https://github.com/galax-io" target="_blank" rel="noreferrer">GitHub org</a></li>
+            <li><a href="mailto:hello@galaxio.org">hello@galaxio.org</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span><span class="blue-dot"></span>© 2026 Galaxio Team · MIT-licensed where applicable</span>
+        <span>One ecosystem, many moving parts.</span>
+      </div>
+    </footer>
+  </div>
 </BaseLayout>
+
+<script>
+  /* ═══════════════════ THEME ═══════════════════ */
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  const themeLabel = themeBtn?.querySelector('.theme-label');
+  function syncThemeLabel() {
+    if (themeLabel) themeLabel.textContent = root.getAttribute('data-theme') === 'dark' ? 'Dark' : 'Light';
+  }
+  syncThemeLabel();
+  themeBtn?.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('galaxio-theme', next);
+    syncThemeLabel();
+  });
+
+  /* ═══════════════════ PRODUCTS accordion + copy ═══════════════════ */
+  const list = document.getElementById('productsList');
+  list?.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('a, .copy-btn')) return;
+    const row = target.closest('.product-row');
+    if (!row) return;
+    const card = row.parentElement!;
+    const open = card.hasAttribute('open');
+    if (open) card.removeAttribute('open');
+    else card.setAttribute('open', '');
+    row.setAttribute('aria-expanded', String(!open));
+  });
+  list?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const row = (e.target as HTMLElement).closest('.product-row');
+    if (!row) return;
+    e.preventDefault();
+    (row as HTMLElement).click();
+  });
+  list?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.copy-btn');
+    if (!btn) return;
+    const id = btn.getAttribute('data-copy');
+    const code = id && document.getElementById(id);
+    if (!code) return;
+    navigator.clipboard?.writeText(code.textContent ?? '');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied';
+    setTimeout(() => (btn.textContent = orig), 1200);
+  });
+</script>
