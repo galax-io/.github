@@ -1,0 +1,68 @@
+---
+import type { Product } from '../data/site';
+import BrandMark from './BrandMark.astro';
+import CodeFrame from './CodeFrame.astro';
+
+interface Props {
+  product: Product;
+  index: number;
+  open?: boolean;
+}
+
+const { product, index, open = false } = Astro.props;
+const num = String(index + 1).padStart(2, '0');
+const codeId = `code-${index}`;
+---
+
+<article class="product" data-idx={index} {...open ? { open: true } : {}}>
+  <div class="product-row" role="button" tabindex="0" aria-expanded={open ? 'true' : 'false'}>
+    <div class="product-idx">R / {num}</div>
+    <div class="product-orbit">
+      <BrandMark viewBox="0 0 525.68 448.52" />
+    </div>
+    <div class="product-name">
+      {product.name}
+      <span class:list={['product-tag', { core: product.tag === 'Plugin' || product.tag === 'Core' }]}>
+        {product.tag}
+      </span>
+    </div>
+    <div class="product-summary">{product.summary}</div>
+    <div class="product-plus" aria-hidden="true">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+        ><path d="M7 1v12M1 7h12"></path></svg
+      >
+    </div>
+  </div>
+  <div class="product-body">
+    <div class="inner">
+      <div class="product-doc">
+        <div class="product-detail">
+          <h4>// About</h4>
+          <p>{product.detail}</p>
+          <h4>// Highlights</h4>
+          <ul>
+            {product.bullets.map((bullet) => <li>{bullet}</li>)}
+          </ul>
+          <div class="product-links">
+            <a class="plink primary" href={product.readme} target="_blank" rel="noreferrer">
+              Read the README
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
+              >
+            </a>
+            <a class="plink" href={product.repo} target="_blank" rel="noreferrer">Repository ↗</a>
+          </div>
+        </div>
+        <div>
+          <CodeFrame lang={product.lang} codeId={codeId} tokens={product.code} />
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
