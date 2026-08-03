@@ -56,25 +56,37 @@ img, svg { display: block; max-width: 100%; }
 
 /* ═══════════════════ TOPBAR ═══════════════════ */
 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--hairline);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  /* full-bleed background — same pattern as .marquee/.manifesto, so the
+     translucent/blurred bar fully covers whatever scrolls behind it
+     (e.g. the now-100vw marquee) instead of leaving it peeking past
+     .page's own max-width on wide screens. .topbar-inner replicates
+     .page's own max-width/padding box so the logo/nav/actions land in
+     exactly the same place as before. */
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+}
+.topbar-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 22px clamp(20px, 4vw, 60px);
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 32px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--hairline);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 }
 /* pin explicitly: nav.primary is display:none below 920px and would
    otherwise drop out of grid auto-placement, pulling topbar-actions
    into its (1fr) column and left-aligning it there */
-.topbar > .brand { grid-column: 1; }
-.topbar > nav.primary { grid-column: 2; }
-.topbar > .topbar-actions { grid-column: 3; }
+.topbar-inner > .brand { grid-column: 1; }
+.topbar-inner > nav.primary { grid-column: 2; }
+.topbar-inner > .topbar-actions { grid-column: 3; }
 .brand {
   display: inline-flex;
   align-items: center;
@@ -172,7 +184,7 @@ html[data-theme="dark"] .gh-btn { background: var(--paper); color: var(--ink); }
 
 /* compact topbar on small screens — full lockup and labels do not fit */
 @media (max-width: 640px) {
-  .topbar { gap: 12px; }
+  .topbar-inner { gap: 12px; }
   .brand { gap: 10px; }
   .brand-mark { width: 32px; height: 32px; }
   .brand-name .sep,

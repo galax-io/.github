@@ -27,19 +27,21 @@ const groups = productGroups.map((group) => ({
   <div class="page">
     <!-- ═══════════════════ TOPBAR ═══════════════════ -->
     <header class="topbar">
-      <a href="#" class="brand" aria-label="Galaxio">
-        <BrandMark class="brand-mark" />
-        <span class="brand-name">Galax<em>io</em><span class="sep">·</span><span class="team">Team</span></span>
-      </a>
-      <nav class="primary">
-        {navLinks.map((link) => <a href={link.href} data-num={link.num}>{link.label}</a>)}
-      </nav>
-      <div class="topbar-actions">
-        <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
-          <span class="swatch"></span>
-          <span class="theme-label">Light</span>
-        </button>
-        <GitHubButton />
+      <div class="topbar-inner">
+        <a href="#" class="brand" aria-label="Galaxio">
+          <BrandMark class="brand-mark" />
+          <span class="brand-name">Galax<em>io</em><span class="sep">·</span><span class="team">Team</span></span>
+        </a>
+        <nav class="primary">
+          {navLinks.map((link) => <a href={link.href} data-num={link.num}>{link.label}</a>)}
+        </nav>
+        <div class="topbar-actions">
+          <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+            <span class="swatch"></span>
+            <span class="theme-label">Light</span>
+          </button>
+          <GitHubButton />
+        </div>
       </div>
     </header>
 
