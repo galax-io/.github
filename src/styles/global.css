@@ -406,7 +406,11 @@ html[data-theme="dark"] .gh-btn { background: var(--paper); color: var(--ink); }
 
 /* ═══════════════════ MARQUEE ═══════════════════ */
 .marquee {
-  margin: clamp(40px, 5vw, 80px) calc(-1 * clamp(20px, 4vw, 60px)) 0;
+  /* break out to the true viewport edge, not just .page's own padding —
+     .page caps at 1480px and centers, so a page-padding-only bleed still
+     leaves gutters once the viewport is wider than ~1600px */
+  width: 100vw;
+  margin: clamp(40px, 5vw, 80px) calc(50% - 50vw) 0;
   padding: 24px 0;
   background: var(--blue);
   color: var(--white);
@@ -937,7 +941,9 @@ html[data-theme="dark"] .tk-str { color: #7ee7a4; }
 .manifesto {
   background: var(--ink);
   color: var(--paper);
-  margin: 0 calc(-1 * clamp(20px, 4vw, 60px));
+  /* same full-bleed fix as .marquee — see comment there */
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
   padding: clamp(64px, 8vw, 120px) clamp(20px, 4vw, 60px);
   position: relative;
   overflow: hidden;
