@@ -69,6 +69,12 @@ img, svg { display: block; max-width: 100%; }
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
+/* pin explicitly: nav.primary is display:none below 920px and would
+   otherwise drop out of grid auto-placement, pulling topbar-actions
+   into its (1fr) column and left-aligning it there */
+.topbar > .brand { grid-column: 1; }
+.topbar > nav.primary { grid-column: 2; }
+.topbar > .topbar-actions { grid-column: 3; }
 .brand {
   display: inline-flex;
   align-items: center;
