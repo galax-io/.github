@@ -1041,7 +1041,13 @@ footer {
   font-weight: 400;
 }
 .footer-wordmark .dot {
-  color: var(--blue);
+  display: inline-block;
+  width: 0.2em;
+  height: 0.2em;
+  border-radius: 50%;
+  background: var(--blue);
+  vertical-align: baseline;
+  margin-left: 0.04em;
 }
 .footer-grid {
   display: grid;
