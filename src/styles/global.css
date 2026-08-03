@@ -164,6 +164,18 @@ html[data-theme="dark"] .gh-btn { background: var(--paper); color: var(--ink); }
 .gh-btn:hover { background: var(--blue); color: var(--white); }
 .gh-btn svg { width: 16px; height: 16px; }
 
+/* compact topbar on small screens — full lockup and labels do not fit */
+@media (max-width: 640px) {
+  .topbar { gap: 12px; }
+  .brand { gap: 10px; }
+  .brand-mark { width: 32px; height: 32px; }
+  .brand-name .sep,
+  .brand-name .team { display: none; }
+  .theme-toggle { padding: 8px; }
+  .theme-toggle .theme-label { display: none; }
+  .gh-btn { padding: 9px 14px; }
+}
+
 /* ═══════════════════ HERO ═══════════════════ */
 .hero {
   position: relative;
@@ -191,6 +203,9 @@ html[data-theme="dark"] .gh-btn { background: var(--paper); color: var(--ink); }
   animation: blink 1.4s ease-in-out infinite;
 }
 @keyframes blink { 50% { opacity: 0.25; } }
+@media (max-width: 640px) {
+  .hero-coord-row { flex-direction: column; gap: 10px; }
+}
 
 /* Hero composition: orbital diagram + wordmark */
 .hero-stage {
