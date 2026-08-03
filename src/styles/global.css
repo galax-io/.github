@@ -1066,7 +1066,7 @@ footer {
   border-top: 1px solid var(--rule-strong);
 }
 .footer-wordmark {
-  font-size: clamp(96px, 18vw, 320px);
+  font-size: clamp(72px, 13vw, 200px);
   line-height: 0.82;
   letter-spacing: -0.07em;
   font-weight: 500;
@@ -1078,15 +1078,6 @@ footer {
   font-style: italic;
   color: var(--blue);
   font-weight: 400;
-}
-.footer-wordmark .dot {
-  display: inline-block;
-  width: 0.2em;
-  height: 0.2em;
-  border-radius: 50%;
-  background: var(--blue);
-  vertical-align: baseline;
-  margin-left: 0.04em;
 }
 .footer-grid {
   display: grid;
