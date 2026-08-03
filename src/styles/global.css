@@ -246,7 +246,7 @@ html[data-theme="dark"] .gh-btn { background: var(--paper); color: var(--ink); }
   height: 0.2em;
   border-radius: 50%;
   background: var(--blue);
-  vertical-align: 0.15em;
+  vertical-align: baseline;
   margin-left: 0.04em;
 }
 
