@@ -24,10 +24,18 @@ const { title, description } = Astro.props;
       rel="stylesheet"
     />
     <script is:inline>
-      // apply the saved theme before first paint so there is no flash
+      // apply the saved theme — or the OS preference, if nothing is saved
+      // yet — before first paint, so there is no flash and no defaulting
+      // to light on a system set to dark
       (function () {
-        var t = localStorage.getItem('galaxio-theme');
-        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+        var stored = localStorage.getItem('galaxio-theme');
+        var theme =
+          stored === 'dark' || stored === 'light'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
   </head>
