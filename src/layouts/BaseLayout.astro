@@ -1,21 +1,40 @@
 ---
 import '../styles/global.css';
+import { defaultLocale, htmlLang, localeHref, locales, type Locale } from '../i18n/locales';
 
 interface Props {
   title: string;
   description: string;
+  locale: Locale;
 }
 
-const { title, description } = Astro.props;
+const { title, description, locale } = Astro.props;
+
+const canonical = new URL(localeHref(locale), Astro.site);
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang={htmlLang[locale]} data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    {
+      locales.map((alt) => (
+        <link
+          rel="alternate"
+          hreflang={htmlLang[alt]}
+          href={new URL(localeHref(alt), Astro.site).href}
+        />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(localeHref(defaultLocale), Astro.site).href}
+    />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

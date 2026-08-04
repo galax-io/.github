@@ -1,34 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandMark from '../components/BrandMark.astro';
+import Emphasis from '../components/Emphasis.astro';
 import GitHubButton from '../components/GitHubButton.astro';
+import LangSwitcher from '../components/LangSwitcher.astro';
 import ProductCard from '../components/Product.astro';
 import { archived, navLinks, orbitLabels, productGroups } from '../data/site';
+import { defaultLocale, localeHref, locales, type Locale } from '../i18n/locales';
+import { ui } from '../i18n/ui';
 
-const marqueeItems = [
-  'Performance engineering',
-  'Gatling · Kafka · JDBC · AMQP',
-  'Cursor · Claude Code · Codex',
-  'Spec-driven load testing',
-  'One organism',
-];
+export function getStaticPaths() {
+  return locales.map((locale) => ({
+    // the default locale is served from the site root, the rest are prefixed
+    params: { locale: locale === defaultLocale ? undefined : locale },
+    props: { locale },
+  }));
+}
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = ui[locale];
 
 let productIndex = 0;
 const groups = productGroups.map((group) => ({
-  ...group,
+  id: group.id,
+  ...t.products.groups[group.id],
   items: group.items.map((product) => ({ product, index: productIndex++ })),
 }));
 ---
 
-<BaseLayout
-  title="Galaxio — One ecosystem. Many moving parts."
-  description="Galaxio Team builds Gatling plugins, AI agent plugins, a CLI, project templates and a spec-driven methodology for performance testing."
->
+<BaseLayout title={t.meta.title} description={t.meta.description} locale={locale}>
   <div class="page">
     <!-- ═══════════════════ TOPBAR ═══════════════════ -->
     <header class="topbar">
       <div class="topbar-inner">
-        <a href="#" class="brand" aria-label="Galaxio">
+        <a href={localeHref(locale)} class="brand" aria-label="Galaxio">
           <BrandMark class="brand-mark" />
           <span class="brand-name"
             >Galax<em>io</em><span class="sep">·</span><span class="team">Team</span></span
@@ -38,15 +47,22 @@ const groups = productGroups.map((group) => ({
           {
             navLinks.map((link) => (
               <a href={link.href} data-num={link.num}>
-                {link.label}
+                {t.nav[link.key]}
               </a>
             ))
           }
         </nav>
         <div class="topbar-actions">
-          <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+          <LangSwitcher current={locale} label={t.language} />
+          <button
+            class="theme-toggle"
+            id="themeBtn"
+            aria-label={t.theme.toggle}
+            data-label-light={t.theme.light}
+            data-label-dark={t.theme.dark}
+          >
             <span class="swatch"></span>
-            <span class="theme-label">Light</span>
+            <span class="theme-label">{t.theme.light}</span>
           </button>
           <GitHubButton />
         </div>
@@ -56,8 +72,8 @@ const groups = productGroups.map((group) => ({
     <!-- ═══════════════════ HERO ═══════════════════ -->
     <section class="hero">
       <div class="hero-coord-row">
-        <div class="sig">Galaxio Team / Est. <span class="mono">2018</span></div>
-        <div><span class="blink"></span>System status — synchronized</div>
+        <div class="sig">{t.hero.est} <span class="mono">2018</span></div>
+        <div><span class="blink"></span>{t.hero.status}</div>
         <div>v3.0 · ECMA / 2026</div>
       </div>
 
@@ -68,21 +84,18 @@ const groups = productGroups.map((group) => ({
               ><circle cx="6" cy="6" r="5"></circle><circle cx="6" cy="6" r="2" fill="currentColor"
               ></circle></svg
             >
-            Open-source · Performance engineering
+            {t.hero.eyebrow}
           </div>
           <h1 class="hero-headline">
-            <span class="line">One <span class="blue">eco</span></span>
-            <span class="line outlined">system,</span>
-            <span class="line">many moving</span>
-            <span class="line">parts<span class="dot"></span></span>
+            <span class="line"><Emphasis text={t.hero.headline[0]} as="span" class="blue" /></span>
+            <span class="line outlined">{t.hero.headline[1]}</span>
+            <span class="line">{t.hero.headline[2]}</span>
+            <span class="line">{t.hero.headline[3]}<span class="dot"></span></span>
           </h1>
-          <p class="hero-lede">
-            We build <em>plugins</em>, a CLI, project templates and portable
-            <em>AI agent</em> plugins for Gatling and adjacent performance-testing ecosystems.
-          </p>
+          <p class="hero-lede"><Emphasis text={t.hero.lede} /></p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#products">
-              Explore the system
+              {t.hero.ctaExplore}
               <svg
                 class="btn-arrow"
                 viewBox="0 0 12 12"
@@ -99,7 +112,7 @@ const groups = productGroups.map((group) => ({
               target="_blank"
               rel="noreferrer"
             >
-              All repositories
+              {t.hero.ctaRepos}
               <svg
                 class="btn-arrow"
                 viewBox="0 0 12 12"
@@ -191,7 +204,7 @@ const groups = productGroups.map((group) => ({
         {
           [0, 1].map(() => (
             <span class="group">
-              {marqueeItems.map((item) => (
+              {t.marquee.map((item) => (
                 <>
                   <span>{item}</span>
                   <BrandMark class="marquee-mark" />
@@ -207,17 +220,14 @@ const groups = productGroups.map((group) => ({
     <section class="block" id="products">
       <header class="section-head">
         <div class="section-tag">
-          <span class="sig"><BrandMark class="mark" /> Index / Products</span>
+          <span class="sig"><BrandMark class="mark" /> {t.products.tag}</span>
           <span class="num">§ <b>01</b> / 04</span>
         </div>
-        <h2 class="section-title">Twelve repositories. <em>One</em> ecosystem.</h2>
-        <p class="section-kicker">
-          Gatling plugins, AI agent plugins, a CLI, project templates and a spec-driven methodology.
-          Tap any repository to see real usage and open its README.
-        </p>
+        <h2 class="section-title"><Emphasis text={t.products.title} /></h2>
+        <p class="section-kicker">{t.products.kicker}</p>
       </header>
 
-      <div class="products" id="productsList">
+      <div class="products" id="productsList" data-label-copied={t.products.copied}>
         {
           groups.map((group) => (
             <section class="product-group" id={`group-${group.id}`}>
@@ -233,14 +243,19 @@ const groups = productGroups.map((group) => ({
               </header>
               <div class="products">
                 {group.items.map(({ product, index }) => (
-                  <ProductCard product={product} index={index} open={index === 0} />
+                  <ProductCard
+                    product={product}
+                    index={index}
+                    open={index === 0}
+                    strings={t.products}
+                  />
                 ))}
               </div>
             </section>
           ))
         }
         <section class="archived-note">
-          <span class="archived-label">Archived</span>
+          <span class="archived-label">{t.products.archived}</span>
           <ul>
             {
               archived.map((repo) => (
@@ -261,89 +276,42 @@ const groups = productGroups.map((group) => ({
     <section class="block" id="community">
       <header class="section-head">
         <div class="section-tag">
-          <span class="sig"><BrandMark class="mark" /> Index / Community</span>
+          <span class="sig"><BrandMark class="mark" /> {t.community.tag}</span>
           <span class="num">§ <b>02</b> / 04</span>
         </div>
-        <h2 class="section-title">Built with contributors, <em>maintainers</em> and users.</h2>
-        <p class="section-kicker">
-          We welcome issues, ideas, documentation improvements, and integrations that help the
-          ecosystem grow.
-        </p>
+        <h2 class="section-title"><Emphasis text={t.community.title} /></h2>
+        <p class="section-kicker">{t.community.kicker}</p>
       </header>
 
       <div class="community-grid">
         <div class="contribute">
-          <a class="contrib" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
-            <span class="contrib-num">01 / Code</span>
-            <div>
-              <h3>Browse the code</h3>
-              <p>
-                See the repositories, understand how they fit together, and follow the evolution on
-                GitHub.
-              </p>
-            </div>
-            <svg
-              class="contrib-arrow"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
-            >
-          </a>
-          <a class="contrib" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
-            <span class="contrib-num">02 / Feedback</span>
-            <div>
-              <h3>Test, report, improve</h3>
-              <p>
-                Try the tools, file bug reports and feature requests. Small documentation fixes are
-                often the fastest way to make a product easier to adopt.
-              </p>
-            </div>
-            <svg
-              class="contrib-arrow"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
-            >
-          </a>
-          <a class="contrib" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
-            <span class="contrib-num">03 / Share</span>
-            <div>
-              <h3>Share integrations</h3>
-              <p>
-                If you use Gatling, k6, or adjacent tools in a new way, that context helps us shape
-                the roadmap.
-              </p>
-            </div>
-            <svg
-              class="contrib-arrow"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
-            >
-          </a>
-          <a class="contrib" href="https://t.me/qa_load" target="_blank" rel="noreferrer">
-            <span class="contrib-num">04 / Talk</span>
-            <div>
-              <h3>Join QA Load on Telegram</h3>
-              <p>
-                The fastest way to reach the team and the wider community of performance engineers.
-              </p>
-            </div>
-            <svg
-              class="contrib-arrow"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
-            >
-          </a>
+          {
+            t.community.cards.map((card, i) => (
+              <a
+                class="contrib"
+                href={i === 3 ? 'https://t.me/qa_load' : 'https://github.com/galax-io'}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span class="contrib-num">{card.num}</span>
+                <div>
+                  <h3>{card.title}</h3>
+                  <p>{card.body}</p>
+                </div>
+                <svg
+                  class="contrib-arrow"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <path d="M5 19L19 5" />
+                  <path d="M8 5h11v11" />
+                </svg>
+              </a>
+            ))
+          }
         </div>
 
         <a class="tg-panel" href="https://t.me/qa_load" target="_blank" rel="noreferrer">
@@ -356,19 +324,20 @@ const groups = productGroups.map((group) => ({
             </g>
             <circle cx="200" cy="200" r="200" fill="none" stroke="rgba(255,255,255,0.18)"></circle>
           </svg>
-          <span class="tg-eye">CH-002 · QA Load · Live</span>
+          <span class="tg-eye">{t.community.tg.eye}</span>
           <div>
-            <h3 class="tg-headline">The signal everybody <em>tunes into.</em></h3>
-            <p class="tg-body" style="margin-top:24px;">
-              A live community of performance engineers, contributors and Galaxio maintainers. Ask
-              questions, share findings, follow releases — in Russian, English and Spanish.
-            </p>
+            <h3 class="tg-headline"><Emphasis text={t.community.tg.headline} /></h3>
+            <p class="tg-body" style="margin-top:24px;">{t.community.tg.body}</p>
           </div>
           <div class="tg-stats">
-            <div class="tg-stat"><span class="num">10k+</span><span class="lbl">Members</span></div>
-            <div class="tg-stat"><span class="num">24/7</span><span class="lbl">Active</span></div>
             <div class="tg-stat">
-              <span class="num">RU·EN·ES</span><span class="lbl">Languages</span>
+              <span class="num">10k+</span><span class="lbl">{t.community.tg.members}</span>
+            </div>
+            <div class="tg-stat">
+              <span class="num">24/7</span><span class="lbl">{t.community.tg.active}</span>
+            </div>
+            <div class="tg-stat">
+              <span class="num">RU·EN·ES</span><span class="lbl">{t.community.tg.languages}</span>
             </div>
           </div>
           <span class="tg-cta">
@@ -399,20 +368,12 @@ const groups = productGroups.map((group) => ({
 
       <div class="manifesto-inner">
         <div>
-          <div class="manifesto-tag">§ 03 / Origin</div>
-          <h2>The name <em>Galaxio</em> comes from Asimov's Galaxia.</h2>
+          <div class="manifesto-tag">{t.manifesto.tag}</div>
+          <h2><Emphasis text={t.manifesto.title} /></h2>
         </div>
         <div class="manifesto-body">
-          <p>
-            <b>Galaxia</b> describes a future state where all planets, all humans, all life and even non-living
-            organic matter are incorporated into one single organism.
-          </p>
-          <p>
-            We liked the idea because it reflects what we work on:
-            <b>coordination, scale, and systems working together as one.</b>
-            Plugins, integrations and workflows are the threads that hold a performance-testing toolchain
-            together — the ecosystem is only as strong as the connections between its parts.
-          </p>
+          <p><Emphasis text={t.manifesto.p1} as="b" /></p>
+          <p><Emphasis text={t.manifesto.p2} as="b" /></p>
         </div>
       </div>
       <div class="manifesto-mark" aria-hidden="true">
@@ -424,17 +385,14 @@ const groups = productGroups.map((group) => ({
     <section class="priority" id="priority">
       <div>
         <div class="section-tag" style="margin-bottom:24px;">
-          <span class="sig"><BrandMark class="mark" /> Index / Priority work</span>
+          <span class="sig"><BrandMark class="mark" /> {t.priority.tag}</span>
         </div>
-        <h2>Need something <em>urgent</em>? We can fast-track it.</h2>
+        <h2><Emphasis text={t.priority.title} /></h2>
       </div>
       <div>
-        <p>
-          Critical features and integrations can be prioritized as a paid engagement. That is the
-          fastest path when shipping speed matters more than waiting in the regular queue.
-        </p>
+        <p>{t.priority.body}</p>
         <a class="btn btn-primary" href="mailto:hello@galaxio.org">
-          Get in touch
+          {t.priority.cta}
           <svg
             class="btn-arrow"
             viewBox="0 0 12 12"
@@ -456,21 +414,18 @@ const groups = productGroups.map((group) => ({
             <BrandMark />
             <strong>Galaxio Team</strong>
           </div>
-          <p>
-            Open-source plugins, agent tooling and workflows for performance testing. Named after
-            Asimov's Galaxia — coordination, scale, systems working as one.
-          </p>
+          <p>{t.footer.about}</p>
         </div>
         <div>
-          <h4>Sections</h4>
+          <h4>{t.footer.sections}</h4>
           <ul>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#community">Community</a></li>
-            <li><a href="#manifesto">Origin</a></li>
+            <li><a href="#products">{t.nav.products}</a></li>
+            <li><a href="#community">{t.nav.community}</a></li>
+            <li><a href="#manifesto">{t.nav.origin}</a></li>
           </ul>
         </div>
         <div>
-          <h4>Repositories</h4>
+          <h4>{t.footer.repositories}</h4>
           <ul>
             <li>
               <a href="https://github.com/galax-io/galaxio-cli" target="_blank" rel="noreferrer"
@@ -505,19 +460,22 @@ const groups = productGroups.map((group) => ({
             </li>
             <li>
               <a href="https://github.com/galax-io" target="_blank" rel="noreferrer"
-                >All on GitHub →</a
+                >{t.footer.allOnGitHub}</a
               >
             </li>
           </ul>
         </div>
         <div>
-          <h4>Community</h4>
+          <h4>{t.footer.community}</h4>
           <ul>
             <li>
-              <a href="https://t.me/qa_load" target="_blank" rel="noreferrer">Telegram — QA Load</a>
+              <a href="https://t.me/qa_load" target="_blank" rel="noreferrer">{t.footer.telegram}</a
+              >
             </li>
             <li>
-              <a href="https://github.com/galax-io" target="_blank" rel="noreferrer">GitHub org</a>
+              <a href="https://github.com/galax-io" target="_blank" rel="noreferrer"
+                >{t.footer.githubOrg}</a
+              >
             </li>
             <li><a href="mailto:hello@galaxio.org">hello@galaxio.org</a></li>
           </ul>
@@ -525,10 +483,8 @@ const groups = productGroups.map((group) => ({
       </div>
 
       <div class="footer-bottom">
-        <span
-          ><span class="blue-dot"></span>© 2026 Galaxio Team · MIT-licensed where applicable</span
-        >
-        <span>One ecosystem, many moving parts.</span>
+        <span><span class="blue-dot"></span>{t.footer.copyright}</span>
+        <span>{t.footer.tagline}</span>
       </div>
     </footer>
   </div>
@@ -539,9 +495,12 @@ const groups = productGroups.map((group) => ({
   const root = document.documentElement;
   const themeBtn = document.getElementById('themeBtn');
   const themeLabel = themeBtn?.querySelector('.theme-label');
+  // labels come from the server-rendered locale, via data attributes
+  const labelLight = themeBtn?.dataset.labelLight ?? 'Light';
+  const labelDark = themeBtn?.dataset.labelDark ?? 'Dark';
   function syncThemeLabel() {
     if (themeLabel)
-      themeLabel.textContent = root.getAttribute('data-theme') === 'dark' ? 'Dark' : 'Light';
+      themeLabel.textContent = root.getAttribute('data-theme') === 'dark' ? labelDark : labelLight;
   }
   syncThemeLabel();
   themeBtn?.addEventListener('click', () => {
@@ -561,6 +520,7 @@ const groups = productGroups.map((group) => ({
 
   /* ═══════════════════ PRODUCTS accordion + copy ═══════════════════ */
   const list = document.getElementById('productsList');
+  const labelCopied = list?.dataset.labelCopied ?? 'Copied';
   list?.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
     if (target.closest('a, .copy-btn')) return;
@@ -587,7 +547,7 @@ const groups = productGroups.map((group) => ({
     if (!code) return;
     navigator.clipboard?.writeText(code.textContent ?? '');
     const orig = btn.textContent;
-    btn.textContent = 'Copied';
+    btn.textContent = labelCopied;
     setTimeout(() => (btn.textContent = orig), 1200);
   });
 </script>

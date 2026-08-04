@@ -1,0 +1,24 @@
+---
+/**
+ * Renders a UI string where the *asterisk-marked* fragment is wrapped in a
+ * tag, e.g. "Need something *urgent*? …" -> "Need something <em>urgent</em>? …".
+ *
+ * Translators only have to keep the asterisks around the right words, and the
+ * markup stays out of the locale files. Segments are rendered as text nodes,
+ * so no set:html and no escaping concerns.
+ */
+interface Props {
+  text: string;
+  /** Tag used for the marked fragment. */
+  as?: 'em' | 'b' | 'span';
+  class?: string;
+}
+
+const { text, as = 'em', class: className } = Astro.props as Props;
+const Tag = as;
+
+// Odd indices are the captured (marked) fragments.
+const segments = text.split(/\*([^*]+)\*/g);
+---
+
+{segments.map((segment, i) => (i % 2 === 1 ? <Tag class={className}>{segment}</Tag> : segment))}

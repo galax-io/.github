@@ -13,10 +13,13 @@ export interface Product {
   repo: string;
 }
 
+export const groupIds = ['plugins', 'ai', 'platform', 'method', 'tooling'] as const;
+
+export type GroupId = (typeof groupIds)[number];
+
+/** Group label and note are UI copy and live in src/i18n/ui.ts, keyed by id. */
 export interface ProductGroup {
-  id: string;
-  label: string;
-  note: string;
+  id: GroupId;
   items: Product[];
 }
 
@@ -26,12 +29,13 @@ export interface ArchivedRepo {
   repo: string;
 }
 
+/** `key` indexes into a locale's `nav` strings; labels live in src/i18n/ui.ts. */
 export const navLinks = [
-  { href: '#products', num: '01', label: 'Products' },
-  { href: '#community', num: '02', label: 'Community' },
-  { href: '#manifesto', num: '03', label: 'Origin' },
-  { href: '#priority', num: '04', label: 'Priority' },
-];
+  { href: '#products', num: '01', key: 'products' },
+  { href: '#community', num: '02', key: 'community' },
+  { href: '#manifesto', num: '03', key: 'origin' },
+  { href: '#priority', num: '04', key: 'priority' },
+] as const;
 
 export const orbitLabels = [
   'galaxio-cli',
@@ -46,8 +50,6 @@ export const orbitLabels = [
 export const productGroups: ProductGroup[] = [
   {
     id: 'plugins',
-    label: 'Gatling Plugins',
-    note: 'Published to Maven Central under org.galaxio',
     items: [
       {
         tag: 'Plugin',
@@ -187,8 +189,6 @@ export const productGroups: ProductGroup[] = [
   },
   {
     id: 'ai',
-    label: 'AI Plugins',
-    note: 'Our engineering practice, portable across agents',
     items: [
       {
         tag: 'AI',
@@ -222,8 +222,6 @@ export const productGroups: ProductGroup[] = [
   },
   {
     id: 'platform',
-    label: 'Core / Platform',
-    note: 'Scaffolding, templates and the CLI that ties them together',
     items: [
       {
         tag: 'Core',
@@ -314,8 +312,6 @@ export const productGroups: ProductGroup[] = [
   },
   {
     id: 'method',
-    label: 'Methodology / Process',
-    note: 'Spec-driven development for performance work',
     items: [
       {
         tag: 'Method',
@@ -375,8 +371,6 @@ export const productGroups: ProductGroup[] = [
   },
   {
     id: 'tooling',
-    label: 'Tooling / Infrastructure',
-    note: 'The supporting cast',
     items: [
       {
         tag: 'Tooling',
