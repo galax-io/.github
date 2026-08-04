@@ -427,6 +427,14 @@ const groups = productGroups.map((group) => ({
     syncThemeLabel();
   });
 
+  // keep following the OS theme live, for as long as the user hasn't
+  // explicitly picked one via the toggle above
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (localStorage.getItem('galaxio-theme')) return;
+    root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    syncThemeLabel();
+  });
+
   /* ═══════════════════ PRODUCTS accordion + copy ═══════════════════ */
   const list = document.getElementById('productsList');
   list?.addEventListener('click', (e) => {
