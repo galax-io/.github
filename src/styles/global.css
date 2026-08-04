@@ -1065,26 +1065,10 @@ footer {
   padding: clamp(64px, 7vw, 100px) 0 32px;
   border-top: 1px solid var(--rule-strong);
 }
-.footer-wordmark {
-  font-size: clamp(72px, 13vw, 200px);
-  line-height: 0.82;
-  letter-spacing: -0.07em;
-  font-weight: 500;
-  margin: 0 0 48px;
-  color: var(--fg);
-  text-wrap: balance;
-}
-.footer-wordmark em {
-  font-style: italic;
-  color: var(--blue);
-  font-weight: 400;
-}
 .footer-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: clamp(24px, 4vw, 56px);
-  padding-top: 40px;
-  border-top: 1px solid var(--hairline);
 }
 @media (max-width: 820px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 540px) { .footer-grid { grid-template-columns: 1fr; } }
