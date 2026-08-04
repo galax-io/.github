@@ -30,10 +30,18 @@ const groups = productGroups.map((group) => ({
       <div class="topbar-inner">
         <a href="#" class="brand" aria-label="Galaxio">
           <BrandMark class="brand-mark" />
-          <span class="brand-name">Galax<em>io</em><span class="sep">·</span><span class="team">Team</span></span>
+          <span class="brand-name"
+            >Galax<em>io</em><span class="sep">·</span><span class="team">Team</span></span
+          >
         </a>
         <nav class="primary">
-          {navLinks.map((link) => <a href={link.href} data-num={link.num}>{link.label}</a>)}
+          {
+            navLinks.map((link) => (
+              <a href={link.href} data-num={link.num}>
+                {link.label}
+              </a>
+            ))
+          }
         </nav>
         <div class="topbar-actions">
           <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
@@ -57,7 +65,8 @@ const groups = productGroups.map((group) => ({
         <div class="hero-text">
           <div class="hero-eyebrow">
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"
-              ><circle cx="6" cy="6" r="5"></circle><circle cx="6" cy="6" r="2" fill="currentColor"></circle></svg
+              ><circle cx="6" cy="6" r="5"></circle><circle cx="6" cy="6" r="2" fill="currentColor"
+              ></circle></svg
             >
             Open-source · Performance engineering
           </div>
@@ -74,13 +83,30 @@ const groups = productGroups.map((group) => ({
           <div class="hero-actions">
             <a class="btn btn-primary" href="#products">
               Explore the system
-              <svg class="btn-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              <svg
+                class="btn-arrow"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
                 ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
               >
             </a>
-            <a class="btn btn-ghost" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/galax-io"
+              target="_blank"
+              rel="noreferrer"
+            >
               All repositories
-              <svg class="btn-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              <svg
+                class="btn-arrow"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
                 ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
               >
             </a>
@@ -115,10 +141,38 @@ const groups = productGroups.map((group) => ({
             </g>
 
             <!-- crosshair -->
-            <line x1="200" y1="0" x2="200" y2="14" stroke="currentColor" stroke-width="1" opacity="0.3"></line>
-            <line x1="200" y1="386" x2="200" y2="400" stroke="currentColor" stroke-width="1" opacity="0.3"></line>
-            <line x1="0" y1="200" x2="14" y2="200" stroke="currentColor" stroke-width="1" opacity="0.3"></line>
-            <line x1="386" y1="200" x2="400" y2="200" stroke="currentColor" stroke-width="1" opacity="0.3"></line>
+            <line
+              x1="200"
+              y1="0"
+              x2="200"
+              y2="14"
+              stroke="currentColor"
+              stroke-width="1"
+              opacity="0.3"></line>
+            <line
+              x1="200"
+              y1="386"
+              x2="200"
+              y2="400"
+              stroke="currentColor"
+              stroke-width="1"
+              opacity="0.3"></line>
+            <line
+              x1="0"
+              y1="200"
+              x2="14"
+              y2="200"
+              stroke="currentColor"
+              stroke-width="1"
+              opacity="0.3"></line>
+            <line
+              x1="386"
+              y1="200"
+              x2="400"
+              y2="200"
+              stroke="currentColor"
+              stroke-width="1"
+              opacity="0.3"></line>
           </svg>
 
           <!-- center brand mark -->
@@ -158,8 +212,8 @@ const groups = productGroups.map((group) => ({
         </div>
         <h2 class="section-title">Twelve repositories. <em>One</em> ecosystem.</h2>
         <p class="section-kicker">
-          Gatling plugins, AI agent plugins, a CLI, project templates and a spec-driven methodology. Tap any
-          repository to see real usage and open its README.
+          Gatling plugins, AI agent plugins, a CLI, project templates and a spec-driven methodology.
+          Tap any repository to see real usage and open its README.
         </p>
       </header>
 
@@ -171,7 +225,9 @@ const groups = productGroups.map((group) => ({
                 <h3 class="product-group-label">
                   <BrandMark class="gmark" />
                   {group.label}
-                  <span class="product-group-count">{String(group.items.length).padStart(2, '0')}</span>
+                  <span class="product-group-count">
+                    {String(group.items.length).padStart(2, '0')}
+                  </span>
                 </h3>
                 <span class="product-group-note">{group.note}</span>
               </header>
@@ -210,7 +266,8 @@ const groups = productGroups.map((group) => ({
         </div>
         <h2 class="section-title">Built with contributors, <em>maintainers</em> and users.</h2>
         <p class="section-kicker">
-          We welcome issues, ideas, documentation improvements, and integrations that help the ecosystem grow.
+          We welcome issues, ideas, documentation improvements, and integrations that help the
+          ecosystem grow.
         </p>
       </header>
 
@@ -220,10 +277,18 @@ const groups = productGroups.map((group) => ({
             <span class="contrib-num">01 / Code</span>
             <div>
               <h3>Browse the code</h3>
-              <p>See the repositories, understand how they fit together, and follow the evolution on GitHub.</p>
+              <p>
+                See the repositories, understand how they fit together, and follow the evolution on
+                GitHub.
+              </p>
             </div>
-            <svg class="contrib-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              ><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
+            <svg
+              class="contrib-arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
             >
           </a>
           <a class="contrib" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
@@ -231,32 +296,52 @@ const groups = productGroups.map((group) => ({
             <div>
               <h3>Test, report, improve</h3>
               <p>
-                Try the tools, file bug reports and feature requests. Small documentation fixes are often the
-                fastest way to make a product easier to adopt.
+                Try the tools, file bug reports and feature requests. Small documentation fixes are
+                often the fastest way to make a product easier to adopt.
               </p>
             </div>
-            <svg class="contrib-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              ><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
+            <svg
+              class="contrib-arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
             >
           </a>
           <a class="contrib" href="https://github.com/galax-io" target="_blank" rel="noreferrer">
             <span class="contrib-num">03 / Share</span>
             <div>
               <h3>Share integrations</h3>
-              <p>If you use Gatling, k6, or adjacent tools in a new way, that context helps us shape the roadmap.</p>
+              <p>
+                If you use Gatling, k6, or adjacent tools in a new way, that context helps us shape
+                the roadmap.
+              </p>
             </div>
-            <svg class="contrib-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              ><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
+            <svg
+              class="contrib-arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
             >
           </a>
           <a class="contrib" href="https://t.me/qa_load" target="_blank" rel="noreferrer">
             <span class="contrib-num">04 / Talk</span>
             <div>
               <h3>Join QA Load on Telegram</h3>
-              <p>The fastest way to reach the team and the wider community of performance engineers.</p>
+              <p>
+                The fastest way to reach the team and the wider community of performance engineers.
+              </p>
             </div>
-            <svg class="contrib-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              ><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
+            <svg
+              class="contrib-arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"><path d="M5 19L19 5"></path><path d="M8 5h11v11"></path></svg
             >
           </a>
         </div>
@@ -275,14 +360,16 @@ const groups = productGroups.map((group) => ({
           <div>
             <h3 class="tg-headline">The signal everybody <em>tunes into.</em></h3>
             <p class="tg-body" style="margin-top:24px;">
-              A live community of performance engineers, contributors and Galaxio maintainers. Ask questions,
-              share findings, follow releases — in Russian, English and Spanish.
+              A live community of performance engineers, contributors and Galaxio maintainers. Ask
+              questions, share findings, follow releases — in Russian, English and Spanish.
             </p>
           </div>
           <div class="tg-stats">
             <div class="tg-stat"><span class="num">10k+</span><span class="lbl">Members</span></div>
             <div class="tg-stat"><span class="num">24/7</span><span class="lbl">Active</span></div>
-            <div class="tg-stat"><span class="num">RU·EN·ES</span><span class="lbl">Languages</span></div>
+            <div class="tg-stat">
+              <span class="num">RU·EN·ES</span><span class="lbl">Languages</span>
+            </div>
           </div>
           <span class="tg-cta">
             <svg viewBox="0 0 24 24" fill="currentColor"
@@ -343,12 +430,18 @@ const groups = productGroups.map((group) => ({
       </div>
       <div>
         <p>
-          Critical features and integrations can be prioritized as a paid engagement. That is the fastest path
-          when shipping speed matters more than waiting in the regular queue.
+          Critical features and integrations can be prioritized as a paid engagement. That is the
+          fastest path when shipping speed matters more than waiting in the regular queue.
         </p>
         <a class="btn btn-primary" href="mailto:hello@galaxio.org">
           Get in touch
-          <svg class="btn-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          <svg
+            class="btn-arrow"
+            viewBox="0 0 12 12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
             ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
           >
         </a>
@@ -364,8 +457,8 @@ const groups = productGroups.map((group) => ({
             <strong>Galaxio Team</strong>
           </div>
           <p>
-            Open-source plugins, agent tooling and workflows for performance testing. Named after Asimov's
-            Galaxia — coordination, scale, systems working as one.
+            Open-source plugins, agent tooling and workflows for performance testing. Named after
+            Asimov's Galaxia — coordination, scale, systems working as one.
           </p>
         </div>
         <div>
@@ -379,32 +472,62 @@ const groups = productGroups.map((group) => ({
         <div>
           <h4>Repositories</h4>
           <ul>
-            <li><a href="https://github.com/galax-io/galaxio-cli" target="_blank" rel="noreferrer">galaxio-cli</a></li>
-            <li><a href="https://github.com/galax-io/ai-plugins" target="_blank" rel="noreferrer">ai-plugins</a></li>
             <li>
-              <a href="https://github.com/galax-io/gatling-kafka-plugin" target="_blank" rel="noreferrer">gatling-kafka-plugin</a>
+              <a href="https://github.com/galax-io/galaxio-cli" target="_blank" rel="noreferrer"
+                >galaxio-cli</a
+              >
             </li>
             <li>
-              <a href="https://github.com/galax-io/gatling-picatinny" target="_blank" rel="noreferrer">gatling-picatinny</a>
+              <a href="https://github.com/galax-io/ai-plugins" target="_blank" rel="noreferrer"
+                >ai-plugins</a
+              >
             </li>
             <li>
-              <a href="https://github.com/galax-io/templates-gatling" target="_blank" rel="noreferrer">templates-gatling</a>
+              <a
+                href="https://github.com/galax-io/gatling-kafka-plugin"
+                target="_blank"
+                rel="noreferrer">gatling-kafka-plugin</a
+              >
             </li>
-            <li><a href="https://github.com/galax-io" target="_blank" rel="noreferrer">All on GitHub →</a></li>
+            <li>
+              <a
+                href="https://github.com/galax-io/gatling-picatinny"
+                target="_blank"
+                rel="noreferrer">gatling-picatinny</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/galax-io/templates-gatling"
+                target="_blank"
+                rel="noreferrer">templates-gatling</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/galax-io" target="_blank" rel="noreferrer"
+                >All on GitHub →</a
+              >
+            </li>
           </ul>
         </div>
         <div>
           <h4>Community</h4>
           <ul>
-            <li><a href="https://t.me/qa_load" target="_blank" rel="noreferrer">Telegram — QA Load</a></li>
-            <li><a href="https://github.com/galax-io" target="_blank" rel="noreferrer">GitHub org</a></li>
+            <li>
+              <a href="https://t.me/qa_load" target="_blank" rel="noreferrer">Telegram — QA Load</a>
+            </li>
+            <li>
+              <a href="https://github.com/galax-io" target="_blank" rel="noreferrer">GitHub org</a>
+            </li>
             <li><a href="mailto:hello@galaxio.org">hello@galaxio.org</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span><span class="blue-dot"></span>© 2026 Galaxio Team · MIT-licensed where applicable</span>
+        <span
+          ><span class="blue-dot"></span>© 2026 Galaxio Team · MIT-licensed where applicable</span
+        >
         <span>One ecosystem, many moving parts.</span>
       </div>
     </footer>
@@ -417,7 +540,8 @@ const groups = productGroups.map((group) => ({
   const themeBtn = document.getElementById('themeBtn');
   const themeLabel = themeBtn?.querySelector('.theme-label');
   function syncThemeLabel() {
-    if (themeLabel) themeLabel.textContent = root.getAttribute('data-theme') === 'dark' ? 'Dark' : 'Light';
+    if (themeLabel)
+      themeLabel.textContent = root.getAttribute('data-theme') === 'dark' ? 'Dark' : 'Light';
   }
   syncThemeLabel();
   themeBtn?.addEventListener('click', () => {

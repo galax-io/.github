@@ -62,6 +62,7 @@ export const productGroups: ProductGroup[] = [
           'Gatling 3.13.5 · Scala 2.13.16 · Java 17+',
         ],
         lang: 'scala · build.sbt + simulation',
+        // prettier-ignore
         code: [
           ['com', '// build.sbt\n'],
           ['key', 'libraryDependencies'], ['', ' += '], ['str', '"org.galaxio" %% "gatling-kafka-plugin" % "<version>"'], ['', ' % Test\n\n'],
@@ -93,6 +94,7 @@ export const productGroups: ProductGroup[] = [
           'Gatling 3.13.x · Scala 2.13 · Java 11+',
         ],
         lang: 'scala · build.sbt + simulation',
+        // prettier-ignore
         code: [
           ['com', '// build.sbt — plugin + your JDBC driver\n'],
           ['key', 'libraryDependencies'], ['', ' ++= '], ['fn', 'Seq'], ['', '(\n'],
@@ -128,6 +130,7 @@ export const productGroups: ProductGroup[] = [
           'Gatling 3.13.x · Scala 2.13 · Java 17+',
         ],
         lang: 'scala · build.sbt + simulation',
+        // prettier-ignore
         code: [
           ['com', '// build.sbt\n'],
           ['key', 'libraryDependencies'], ['', ' += '], ['str', '"org.galaxio" %% "gatling-amqp-plugin" % "<version>"'], ['', ' % Test\n\n'],
@@ -163,6 +166,7 @@ export const productGroups: ProductGroup[] = [
           'Gatling 3.13.x since 1.12.0 · Scala 2.13 · Java 17+',
         ],
         lang: 'scala · build.sbt + simulation',
+        // prettier-ignore
         code: [
           ['com', '// build.sbt\n'],
           ['key', 'libraryDependencies'], ['', ' += '], ['str', '"org.galaxio" %% "gatling-picatinny" % "VERSION"'], ['', ' % Test\n\n'],
@@ -199,6 +203,7 @@ export const productGroups: ProductGroup[] = [
           'Apache-2.0 · Node >= 22 · Agent Skills standard',
         ],
         lang: 'shell · install',
+        // prettier-ignore
         code: [
           ['com', '# Claude Code\n'],
           ['', '$ claude plugin marketplace add galax-io/ai-plugins\n\n'],
@@ -233,6 +238,7 @@ export const productGroups: ProductGroup[] = [
           'macOS, Linux, Windows · go install, shell installer, or Docker',
         ],
         lang: 'shell',
+        // prettier-ignore
         code: [
           ['com', '# install (macOS / Linux)\n'],
           ['', '$ curl -fsSL https://raw.githubusercontent.com/galax-io/\\\n'],
@@ -262,6 +268,7 @@ export const productGroups: ProductGroup[] = [
           'Pack 0.15.0 · Gatling 3.13.5 · Picatinny 1.17.1',
         ],
         lang: 'shell',
+        // prettier-ignore
         code: [
           ['com', '# scaffold, then enable optional plugin modules\n'],
           ['', '$ galaxio template init gatling/scala-sbt \\\n'],
@@ -288,6 +295,7 @@ export const productGroups: ProductGroup[] = [
           'Swap in your own with template configure --registry',
         ],
         lang: 'shell',
+        // prettier-ignore
         code: [
           ['com', '# the default registry needs no setup, but you can inspect it\n'],
           ['', '$ galaxio template configure --show\n'],
@@ -322,6 +330,7 @@ export const productGroups: ProductGroup[] = [
           'Status: research & design — the design lives in docs/',
         ],
         lang: 'shell · specify',
+        // prettier-ignore
         code: [
           ['com', '# discover\n'],
           ['', '$ specify preset search perf\n'],
@@ -348,6 +357,7 @@ export const productGroups: ProductGroup[] = [
           'Installs 7 spec-kit extensions + a preset',
         ],
         lang: 'shell · copier',
+        // prettier-ignore
         code: [
           ['com', '# install Copier once, isolated\n'],
           ['', '$ uv tool install copier    '], ['com', '# or: pipx install copier'], ['', '\n\n'],
@@ -380,6 +390,7 @@ export const productGroups: ProductGroup[] = [
           'Pairs with gatling-kafka-plugin Avro support',
         ],
         lang: 'scala · plugins.sbt',
+        // prettier-ignore
         code: [
           ['com', '// project/plugins.sbt\n'],
           ['fn', 'addSbtPlugin'], ['', '('], ['str', '"org.galaxio" % "sbt-schema-registry-plugin" % "<version>"'], ['', ')\n\n'],
@@ -403,6 +414,7 @@ export const productGroups: ProductGroup[] = [
           'Reproducible across CI providers',
         ],
         lang: 'shell',
+        // prettier-ignore
         code: [
           ['com', '# the galaxio CLI is also published as an image\n'],
           ['', '$ docker pull galaxioteam/galaxio:latest\n\n'],
