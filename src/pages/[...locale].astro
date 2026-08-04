@@ -245,6 +245,7 @@ const groups = productGroups.map((group) => ({
                 {group.items.map(({ product, index }) => (
                   <ProductCard
                     product={product}
+                    copy={t.products.items[product.name]}
                     index={index}
                     open={index === 0}
                     strings={t.products}
@@ -263,7 +264,7 @@ const groups = productGroups.map((group) => ({
                   <a href={repo.repo} target="_blank" rel="noreferrer">
                     {repo.name}
                   </a>
-                  <span>{repo.note}</span>
+                  <span>{t.products.archivedNotes[repo.name]}</span>
                 </li>
               ))
             }

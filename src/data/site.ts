@@ -1,12 +1,31 @@
 /** Syntax classes used by the code frames: '' = plain, com = comment, key = keyword, str = string, fn = function. */
 export type CodeToken = ['' | 'com' | 'key' | 'str' | 'fn', string];
 
+export const productNames = [
+  'gatling-kafka-plugin',
+  'gatling-jdbc-plugin',
+  'gatling-amqp-plugin',
+  'gatling-picatinny',
+  'ai-plugins',
+  'galaxio-cli',
+  'templates-gatling',
+  'galaxio-template-registry',
+  'spec-kit-performance',
+  'spec-kit-galaxio-bootstrap',
+  'sbt-schema-registry-plugin',
+  'docker-images',
+] as const;
+
+export type ProductName = (typeof productNames)[number];
+
+/**
+ * Structure only. Prose — summary, detail and bullets — is translated copy
+ * and lives in the locale files, keyed by `name`. Code snippets, version
+ * lines and URLs stay here: they are the same in every language.
+ */
 export interface Product {
   tag: 'Plugin' | 'AI' | 'Core' | 'Method' | 'Tooling';
-  name: string;
-  summary: string;
-  detail: string;
-  bullets: string[];
+  name: ProductName;
   lang: string;
   code: CodeToken[];
   readme: string;
@@ -23,9 +42,13 @@ export interface ProductGroup {
   items: Product[];
 }
 
+export const archivedNames = ['galaxio-gatling-pro', 'gatling-template.g8'] as const;
+
+export type ArchivedName = (typeof archivedNames)[number];
+
+/** The "why it was archived" note is translated copy, keyed by `name`. */
 export interface ArchivedRepo {
-  name: string;
-  note: string;
+  name: ArchivedName;
   repo: string;
 }
 
@@ -54,15 +77,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Plugin',
         name: 'gatling-kafka-plugin',
-        summary: 'Kafka protocol plugin — produce, request-reply, Avro.',
-        detail:
-          'Kafka protocol plugin for Gatling. Produce-only and request-reply flows with plain serialization, Avro4s helpers and Schema Registry integration. Reply correlation is configured at the protocol level and tracked by a shared consumer.',
-        bullets: [
-          'Produce-only via kafka("name").topic(...).send(...)',
-          'Request-reply with matchByValue / matchByMessage correlation',
-          'Avro4s + Schema Registry, or your own Kafka Serde[T]',
-          'Gatling 3.13.5 · Scala 2.13.16 · Java 17+',
-        ],
         lang: 'scala · build.sbt + simulation',
         // prettier-ignore
         code: [
@@ -86,15 +100,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Plugin',
         name: 'gatling-jdbc-plugin',
-        summary: 'JDBC plugin — SQL, batches, stored procedures, HikariCP.',
-        detail:
-          'Execute SQL queries, inserts, updates, batch operations, raw SQL and stored procedures against any JDBC-compatible database, with HikariCP connection pooling and result checks. Vendor drivers are not bundled — add the one for your database.',
-        bullets: [
-          'query / queryP prepared statements, insertInto, rawSql, batch, call',
-          'HikariCP pooling with a dedicated blocking executor',
-          'Checks: allResults, simpleCheck, Gatling EL in SQL',
-          'Gatling 3.13.x · Scala 2.13 · Java 11+',
-        ],
         lang: 'scala · build.sbt + simulation',
         // prettier-ignore
         code: [
@@ -122,15 +127,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Plugin',
         name: 'gatling-amqp-plugin',
-        summary: 'AMQP / RabbitMQ — publish, request-reply, consume.',
-        detail:
-          'AMQP protocol plugin supporting RabbitMQ with publish, request-reply and consume patterns, channel pooling and publisher confirms. Queue and exchange declarations can be driven from the DSL.',
-        bullets: [
-          'queueExchange / directExchange / topicExchange publishing',
-          'Request-reply with matchByMessageId or matchByCorrelationId',
-          'Full message-property DSL, all Gatling EL aware',
-          'Gatling 3.13.x · Scala 2.13 · Java 17+',
-        ],
         lang: 'scala · build.sbt + simulation',
         // prettier-ignore
         code: [
@@ -158,15 +154,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Plugin',
         name: 'gatling-picatinny',
-        summary: 'DSL extensions — feeders, transactions, JWT, Redis, config.',
-        detail:
-          'Production-grade helpers on top of the core Gatling DSL: structured configuration, Faker-backed data feeders, signed JWTs, Redis-backed scenarios, reusable transaction blocks, NFR assertions and secret masking in logs.',
-        bullets: [
-          'SimulationConfig — shared baseUrl / intensity / durations with -D overrides',
-          'Faker API feeders, HC Vault, CSV and phone feeders',
-          'JWT (HS/RS/ES), transactions with their own latency stats',
-          'Gatling 3.13.x since 1.12.0 · Scala 2.13 · Java 17+',
-        ],
         lang: 'scala · build.sbt + simulation',
         // prettier-ignore
         code: [
@@ -193,15 +180,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'AI',
         name: 'ai-plugins',
-        summary: 'Galaxio Performance Kit for Cursor, Claude Code and Codex.',
-        detail:
-          'Galaxio engineering workflows packaged as portable agent plugins. One plugin is authored once — a single skills/ tree per plugin generates the Cursor, Claude Code and Codex manifests from one source file. Ships galaxio-gatling-pro: Gatling JVM performance testing in Galaxio style.',
-        bullets: [
-          'galaxio-gatling-pro — Gatling 3.9.x–3.15.x, Scala/Java/Kotlin',
-          'sbt, Maven or Gradle · Picatinny · HTTP/JDBC/JMS/Kafka/AMQP',
-          'Generated manifests are never hand-edited — npm run check gates drift',
-          'Apache-2.0 · Node >= 22 · Agent Skills standard',
-        ],
         lang: 'shell · install',
         // prettier-ignore
         code: [
@@ -226,15 +204,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Core',
         name: 'galaxio-cli',
-        summary: 'CLI — scaffold projects, generate scripts from API specs.',
-        detail:
-          'A Go CLI for Gatling performance-testing workflows. Scaffolds ready-to-compile load-test projects from templates and generates Gatling scripts from Swagger/OpenAPI, HAR recordings or Postman collections. Ships with a default registry, so discovery works with no configuration.',
-        bullets: [
-          'template init / list — scaffold and discover templates',
-          'generate swagger / har / postman — scripts from an existing API spec',
-          'doctor — validate config and registry access · update — self-update',
-          'macOS, Linux, Windows · go install, shell installer, or Docker',
-        ],
         lang: 'shell',
         // prettier-ignore
         code: [
@@ -256,15 +225,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Core',
         name: 'templates-gatling',
-        summary: 'Ready-to-compile Gatling templates for Scala, Java, Kotlin.',
-        detail:
-          'The Gatling template pack for galaxio-cli. Six ready-to-compile templates covering Scala, Java and Kotlin on sbt, Maven and Gradle, with optional Kafka, JDBC and AMQP plugin modules rendered on demand.',
-        bullets: [
-          'scala-sbt · scala-gradle · java-maven · java-gradle · kotlin-maven · kotlin-gradle',
-          'Optional Kafka / JDBC / AMQP overlays via *PluginEnabled inputs',
-          'Every input overridable with --set or a --values YAML file',
-          'Pack 0.15.0 · Gatling 3.13.5 · Picatinny 1.17.1',
-        ],
         lang: 'shell',
         // prettier-ignore
         code: [
@@ -284,14 +244,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Core',
         name: 'galaxio-template-registry',
-        summary: 'Versioned template registry and metadata.',
-        detail:
-          'The default registry galaxio-cli reads from. Holds versioned project templates and their metadata, so the CLI can resolve a pack version to a GitHub release and render from it. Point the CLI elsewhere only when you need a private source.',
-        bullets: [
-          'Default source — github:galax-io/galaxio-template-registry',
-          'Pack version resolves to a GitHub release tag',
-          'Swap in your own with template configure --registry',
-        ],
         lang: 'shell',
         // prettier-ignore
         code: [
@@ -316,15 +268,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Method',
         name: 'spec-kit-performance',
-        summary: 'Spec-driven-development methodology for load testing.',
-        detail:
-          'A spec-driven-development methodology for performance and load testing, built on GitHub spec-kit. It encodes load-testing methodology patterns as a ratified constitution, so an engagement runs as a governed, traceable, gated pipeline instead of a pile of ad-hoc scripts.',
-        bullets: [
-          'Four phases, two front-door actors — bootstrap, order, spec & plan, build & run',
-          'NFR prose -> clarify -> EARS SLOs -> machine-readable nfr.yml',
-          'Shipped as a spec-kit bundle: preset + extension + workflow',
-          'Status: research & design — the design lives in docs/',
-        ],
         lang: 'shell · specify',
         // prettier-ignore
         code: [
@@ -343,15 +286,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Method',
         name: 'spec-kit-galaxio-bootstrap',
-        summary: 'Copier template — our dev process wired into a new project.',
-        detail:
-          'A Copier template for spinning up a new project with the Galaxio development process already wired in: spec-kit extensions and presets, the issue-PR-milestone linkage gate, and a stack-agnostic AGENTS.md / CLAUDE.md. The stack does not matter — the process is the same for every project.',
-        bullets: [
-          'Pick a stack (scala-sbt / jvm-gradle / node / python / go / generic) and defaults pre-fill',
-          'linkage-guard hook blocks release tagging unless issue-PR-milestone holds',
-          'copier update 3-way-merges later process changes into your project',
-          'Installs 7 spec-kit extensions + a preset',
-        ],
         lang: 'shell · copier',
         // prettier-ignore
         code: [
@@ -375,14 +309,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Tooling',
         name: 'sbt-schema-registry-plugin',
-        summary: 'SBT plugin for Confluent Schema Registry.',
-        detail:
-          'Adds an SBT task that downloads Avro and Protobuf schemas from a Confluent Schema Registry and generates sources from them, so generated code stays in sync with whatever your producers and consumers expect.',
-        bullets: [
-          'Download and generate Avro / Protobuf schemas',
-          'Keeps generated code in sync with the registry',
-          'Pairs with gatling-kafka-plugin Avro support',
-        ],
         lang: 'scala · plugins.sbt',
         // prettier-ignore
         code: [
@@ -399,14 +325,6 @@ export const productGroups: ProductGroup[] = [
       {
         tag: 'Tooling',
         name: 'docker-images',
-        summary: 'Images for Galaxio CI/CD and local development.',
-        detail:
-          'Container images used by Galaxio CI/CD pipelines and local development environments — pinned toolchains so a Gatling run behaves the same on a laptop and in CI.',
-        bullets: [
-          'Images for CI/CD and local development',
-          'Pinned JDK / build-tool versions',
-          'Reproducible across CI providers',
-        ],
         lang: 'shell',
         // prettier-ignore
         code: [
@@ -426,12 +344,10 @@ export const productGroups: ProductGroup[] = [
 export const archived: ArchivedRepo[] = [
   {
     name: 'galaxio-gatling-pro',
-    note: 'moved to ai-plugins as a plugin in the Galaxio Performance Kit',
     repo: 'https://github.com/galax-io/galaxio-gatling-pro',
   },
   {
     name: 'gatling-template.g8',
-    note: 'superseded by templates-gatling',
     repo: 'https://github.com/galax-io/gatling-template.g8',
   },
 ];
