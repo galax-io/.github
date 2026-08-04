@@ -22,14 +22,20 @@ const codeId = `code-${index}`;
     </div>
     <div class="product-name">
       {product.name}
-      <span class:list={['product-tag', { core: product.tag === 'Plugin' || product.tag === 'Core' }]}>
+      <span
+        class:list={['product-tag', { core: product.tag === 'Plugin' || product.tag === 'Core' }]}
+      >
         {product.tag}
       </span>
     </div>
     <div class="product-summary">{product.summary}</div>
     <div class="product-plus" aria-hidden="true">
-      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-        ><path d="M7 1v12M1 7h12"></path></svg
+      <svg
+        viewBox="0 0 14 14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"><path d="M7 1v12M1 7h12"></path></svg
       >
     </div>
   </div>
@@ -53,7 +59,8 @@ const codeId = `code-${index}`;
                 fill="none"
                 stroke="currentColor"
                 stroke-width="1.8"
-                stroke-linecap="round"><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
+                stroke-linecap="round"
+                ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
               >
             </a>
             <a class="plink" href={product.repo} target="_blank" rel="noreferrer">Repository ↗</a>

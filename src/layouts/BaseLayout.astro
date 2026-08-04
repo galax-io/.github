@@ -28,8 +28,8 @@ const { title, description } = Astro.props;
       // yet — before first paint, so there is no flash and no defaulting
       // to light on a system set to dark
       (function () {
-        var stored = localStorage.getItem('galaxio-theme');
-        var theme =
+        const stored = localStorage.getItem('galaxio-theme');
+        const theme =
           stored === 'dark' || stored === 'light'
             ? stored
             : window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -50,11 +50,8 @@ const { title, description } = Astro.props;
           ></path>
           <path
             fill="currentColor"
-            d="M393.37,191.39l-185.06,122,174.26-137A9.24,9.24,0,0,1,394,190.94Z"
-          ></path>
-          <path
-            fill="currentColor"
-            d="M381,164.21,72.2,375.41l302.33-220.3a5.57,5.57,0,0,1,6.56,9Z"
+            d="M393.37,191.39l-185.06,122,174.26-137A9.24,9.24,0,0,1,394,190.94Z"></path>
+          <path fill="currentColor" d="M381,164.21,72.2,375.41l302.33-220.3a5.57,5.57,0,0,1,6.56,9Z"
           ></path>
           <path
             fill="currentColor"
