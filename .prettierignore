@@ -1,0 +1,8 @@
+dist/
+.astro/
+node_modules/
+package-lock.json
+
+# org-facing content, not site source — left as authored
+README.md
+profile/
