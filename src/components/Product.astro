@@ -1,15 +1,19 @@
 ---
 import type { Product } from '../data/site';
+import type { ProductCopy, Strings } from '../i18n/types';
 import BrandMark from './BrandMark.astro';
 import CodeFrame from './CodeFrame.astro';
 
 interface Props {
   product: Product;
+  /** Translated prose for this product, from the active locale. */
+  copy: ProductCopy;
   index: number;
   open?: boolean;
+  strings: Strings['products'];
 }
 
-const { product, index, open = false } = Astro.props;
+const { product, copy, index, open = false, strings } = Astro.props;
 const num = String(index + 1).padStart(2, '0');
 const codeId = `code-${index}`;
 ---
@@ -28,7 +32,7 @@ const codeId = `code-${index}`;
         {product.tag}
       </span>
     </div>
-    <div class="product-summary">{product.summary}</div>
+    <div class="product-summary">{copy.summary}</div>
     <div class="product-plus" aria-hidden="true">
       <svg
         viewBox="0 0 14 14"
@@ -43,15 +47,15 @@ const codeId = `code-${index}`;
     <div class="inner">
       <div class="product-doc">
         <div class="product-detail">
-          <h4>// About</h4>
-          <p>{product.detail}</p>
-          <h4>// Highlights</h4>
+          <h4>{strings.about}</h4>
+          <p>{copy.detail}</p>
+          <h4>{strings.highlights}</h4>
           <ul>
-            {product.bullets.map((bullet) => <li>{bullet}</li>)}
+            {copy.bullets.map((bullet) => <li>{bullet}</li>)}
           </ul>
           <div class="product-links">
             <a class="plink primary" href={product.readme} target="_blank" rel="noreferrer">
-              Read the README
+              {strings.readme}
               <svg
                 width="11"
                 height="11"
@@ -63,11 +67,18 @@ const codeId = `code-${index}`;
                 ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
               >
             </a>
-            <a class="plink" href={product.repo} target="_blank" rel="noreferrer">Repository ↗</a>
+            <a class="plink" href={product.repo} target="_blank" rel="noreferrer"
+              >{strings.repository}</a
+            >
           </div>
         </div>
         <div>
-          <CodeFrame lang={product.lang} codeId={codeId} tokens={product.code} />
+          <CodeFrame
+            lang={product.lang}
+            codeId={codeId}
+            tokens={product.code}
+            copyLabel={strings.copy}
+          />
         </div>
       </div>
     </div>

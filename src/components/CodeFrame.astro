@@ -5,15 +5,16 @@ interface Props {
   lang: string;
   codeId: string;
   tokens: CodeToken[];
+  copyLabel: string;
 }
 
-const { lang, codeId, tokens } = Astro.props;
+const { lang, codeId, tokens, copyLabel } = Astro.props;
 ---
 
 <div class="code-frame">
   <div class="code-head">
     <span class="label">{lang}</span>
-    <button class="copy-btn" type="button" data-copy={codeId}>Copy</button>
+    <button class="copy-btn" type="button" data-copy={codeId}>{copyLabel}</button>
   </div>
   <div class="code-body">
     <pre><code id={codeId}>{tokens.map(([cls, txt]) => (cls ? <span class={`tk-${cls}`}>{txt}</span> : txt))}</code></pre>

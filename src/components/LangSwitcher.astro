@@ -1,0 +1,68 @@
+---
+import { locales, localeHref, localeLabel, localeName, type Locale } from '../i18n/locales';
+
+interface Props {
+  current: Locale;
+  label: string;
+}
+
+const { current, label } = Astro.props;
+---
+
+{
+  /* <details> gives us a keyboard-accessible disclosure with no JS for the
+    open/close itself; the script below only adds outside-click and Escape. */
+}
+<details class="lang-switcher">
+  <summary class="lang-trigger" title={label} aria-label={`${label}: ${localeName[current]}`}>
+    <svg class="lang-globe" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"
+      ><circle cx="8" cy="8" r="6.4"></circle><ellipse cx="8" cy="8" rx="2.8" ry="6.4"
+      ></ellipse><path d="M1.9 6h12.2M1.9 10h12.2"></path></svg
+    >
+    <span class="lang-code">{localeLabel[current]}</span>
+    <svg
+      class="lang-chevron"
+      viewBox="0 0 10 6"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"><path d="M1 1.5 5 4.5 9 1.5"></path></svg
+    >
+  </summary>
+  <ul class="lang-menu">
+    {
+      locales.map((locale) => (
+        <li>
+          <a
+            href={localeHref(locale)}
+            hreflang={locale}
+            lang={locale}
+            class:list={['lang-option', { current: locale === current }]}
+            aria-current={locale === current ? 'true' : undefined}
+          >
+            <span class="lang-option-name">{localeName[locale]}</span>
+            <span class="lang-option-code">{localeLabel[locale]}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</details>
+
+<script>
+  // close the dropdown on outside click or Escape — <details> handles the rest
+  const switcher = document.querySelector<HTMLDetailsElement>('.lang-switcher');
+  if (switcher) {
+    document.addEventListener('click', (e) => {
+      if (!switcher.open) return;
+      if (!switcher.contains(e.target as Node)) switcher.open = false;
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || !switcher.open) return;
+      switcher.open = false;
+      switcher.querySelector<HTMLElement>('.lang-trigger')?.focus();
+    });
+  }
+</script>
