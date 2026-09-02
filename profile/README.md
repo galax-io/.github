@@ -25,6 +25,7 @@
 - Build plugins for Gatling, k6, and related tooling
 - Design integrations that make load testing easier to adopt
 - Ship AI agent plugins that bring our practices into Cursor, Claude Code, and Codex
+- Define open, tool-agnostic formats for load-testing requirements and results
 - Improve workflows for performance engineering teams
 - Reduce complexity in setup, automation, and maintenance
 
@@ -51,10 +52,11 @@ We help teams move faster with cleaner load-testing toolchains, more reliable au
 
 ### Methodology / Process
 
-| Repository | Description |
-| :-- | :-- |
-| [spec-kit-performance](https://github.com/galax-io/spec-kit-performance) | Spec-driven-development methodology for performance/load testing, built on GitHub spec-kit — constitution, EARS SLOs, gated pipeline. *(research & design)* |
-| [spec-kit-galaxio-bootstrap](https://github.com/galax-io/spec-kit-galaxio-bootstrap) | Copier template for new projects — spec-kit, issue↔PR↔milestone linkage gate, stack-agnostic `AGENTS.md`/`CLAUDE.md`. |
+| Repository | Version | Description |
+| :-- | :-- | :-- |
+| [spec-kit-performance](https://github.com/galax-io/spec-kit-performance) | — | Spec-driven-development methodology for performance/load testing, built on GitHub spec-kit — constitution, EARS SLOs, gated pipeline. *(research & design)* |
+| [spec-kit-galaxio-bootstrap](https://github.com/galax-io/spec-kit-galaxio-bootstrap) | — | Copier template for new projects — spec-kit, issue↔PR↔milestone linkage gate, stack-agnostic `AGENTS.md`/`CLAUDE.md`. |
+| [opennfr](https://github.com/galax-io/opennfr) | [![Release](https://img.shields.io/github/v/release/galax-io/opennfr)](https://github.com/galax-io/opennfr/releases) | One format for load-testing requirements that names no tool — a JSON Schema for requirement sets, with a validated example corpus. *(pre-1.0; nothing executes a document yet)* |
 
 ### Core / Platform
 
@@ -70,6 +72,7 @@ We help teams move faster with cleaner load-testing toolchains, more reliable au
 | :-- | :-- | :-- |
 | [sbt-schema-registry-plugin](https://github.com/galax-io/sbt-schema-registry-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/sbt-schema-registry-plugin)](https://github.com/galax-io/sbt-schema-registry-plugin/releases) | SBT plugin for Confluent Schema Registry — download and generate Avro/Protobuf schemas. |
 | [docker-images](https://github.com/galax-io/docker-images) | — | Docker images for Galaxio CI/CD and local development environments. |
+| [parsec](https://github.com/galax-io/parsec) | — | Load-test result primitives in Go — one model for Gatling, JMeter, k6, Locust and Yandex.Tank results, with decoders and statistics. *(scaffold & backlog; nothing implemented yet)* |
 
 <details>
 <summary>Archived</summary>
