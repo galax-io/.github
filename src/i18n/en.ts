@@ -27,7 +27,7 @@ export const en: Strings = {
   ],
   products: {
     tag: 'Index / Products',
-    title: 'Twelve repositories. *One* ecosystem.',
+    title: 'Fourteen repositories. *One* ecosystem.',
     kicker:
       'Gatling plugins, AI agent plugins, a CLI, project templates and a spec-driven methodology. Tap any repository to see real usage and open its README.',
     about: '// About',
@@ -169,6 +169,17 @@ export const en: Strings = {
           'Installs 7 spec-kit extensions + a preset',
         ],
       },
+      opennfr: {
+        summary: 'One format for load-testing requirements, naming no tool.',
+        detail:
+          'A tool-agnostic format for performance requirements. One JSON Schema decides what a RequirementSet may say; a corpus of examples is validated against it on every commit. A requirement names its requests once, then states criteria — what must hold — and guards — whether the run that produced them meant anything. No tool is named anywhere in a document, and that is the one property the format will not trade away. Nothing reads a document yet: a requirement can be written, validated, reviewed and versioned, but not run.',
+        bullets: [
+          'selector says which requests · criteria what must hold · guards whether the run was valid',
+          'Predicates are structured — metric / aggregation / op / threshold / unit, no expression language to parse',
+          'A guard catches the run that aimed at 200 rps, pushed 5 and still went green',
+          'Apache-2.0 · JSON Schema Draft 2020-12 · v0.9.0, pre-1.0',
+        ],
+      },
       'sbt-schema-registry-plugin': {
         summary: 'SBT plugin for Confluent Schema Registry.',
         detail:
@@ -187,6 +198,17 @@ export const en: Strings = {
           'Images for CI/CD and local development',
           'Pinned JDK / build-tool versions',
           'Reproducible across CI providers',
+        ],
+      },
+      parsec: {
+        summary: 'Load-test result primitives for Go — one model for every tool.',
+        detail:
+          'One canonical model for the results of a load test, a decoder per tool that produces it, and a statistics engine that answers the questions a report asks. It exists because Gatling stopped generating stats.json in 3.13.5 and since 3.13.0 writes simulation.log in an undocumented binary format only the exact same Gatling version can read. Nothing is implemented yet — the repository holds the scaffold, the backlog and a milestone per source.',
+        bullets: [
+          'model/ canonical types · gatling/ text and binary codecs · stats/ percentiles and series',
+          'Planned sources: Gatling 3.11–3.15, JMeter JTL, k6, Locust, Yandex.Tank phout',
+          'Every read version-gated — an older version refused, an unknown newer one decoded with a warning',
+          'MIT · Go · model and gatling depend on the standard library only',
         ],
       },
     },

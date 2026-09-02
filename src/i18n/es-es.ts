@@ -32,7 +32,7 @@ export const esES: Strings = {
   ],
   products: {
     tag: 'Índice / Productos',
-    title: 'Doce repositorios. *Un* ecosistema.',
+    title: 'Catorce repositorios. *Un* ecosistema.',
     kicker:
       'Plugins para Gatling, plugins para agentes de IA, una CLI, plantillas de proyecto y una metodología spec-driven. Abre cualquier repositorio para ver su uso real y su README.',
     about: '// Acerca de',
@@ -174,6 +174,17 @@ export const esES: Strings = {
           'Instala 7 extensiones de spec-kit y un preset',
         ],
       },
+      opennfr: {
+        summary: 'Un único formato para los requisitos de carga, sin nombrar ninguna herramienta.',
+        detail:
+          'Un formato de requisitos de rendimiento independiente de la herramienta. Un único JSON Schema decide qué puede decir un documento RequirementSet, y un corpus de ejemplos se valida contra él en cada commit. Un requisito nombra sus peticiones una sola vez; debajo van los criteria — lo que debe cumplirse — y los guards — si la ejecución que las produjo significó algo. En un documento no se nombra ninguna herramienta, y esa es la propiedad que el formato no va a ceder. Todavía nada lee un documento: un requisito se puede escribir, validar, revisar y versionar, pero no ejecutar.',
+        bullets: [
+          'selector dice qué peticiones · criteria qué debe cumplirse · guards si la ejecución fue válida',
+          'Los predicados son estructurados — metric / aggregation / op / threshold / unit, sin lenguaje de expresiones que parsear',
+          'Un guard detecta la ejecución que apuntaba a 200 rps, empujó 5 y aun así salió en verde',
+          'Apache-2.0 · JSON Schema Draft 2020-12 · v0.9.0, antes de 1.0',
+        ],
+      },
       'sbt-schema-registry-plugin': {
         summary: 'Plugin de SBT para Confluent Schema Registry.',
         detail:
@@ -192,6 +203,18 @@ export const esES: Strings = {
           'Imágenes para CI/CD y desarrollo local',
           'Versiones fijadas de JDK y herramientas de build',
           'Reproducibles entre proveedores de CI',
+        ],
+      },
+      parsec: {
+        summary:
+          'Primitivas de resultados de carga para Go — un modelo para todas las herramientas.',
+        detail:
+          'Un modelo canónico para los resultados de una prueba de carga, un decodificador por cada herramienta que los produce y un motor de estadísticas que responde a lo que pregunta un informe. Existe porque Gatling dejó de generar stats.json en la 3.13.5 y desde la 3.13.0 escribe simulation.log en un formato binario sin documentar que solo puede leer esa misma versión de Gatling. Todavía no hay nada implementado: el repositorio contiene el esqueleto, el backlog y un milestone por cada fuente.',
+        bullets: [
+          'model/ tipos canónicos · gatling/ códecs de texto y binario · stats/ percentiles y series',
+          'Fuentes previstas: Gatling 3.11–3.15, JTL de JMeter, k6, Locust, phout de Yandex.Tank',
+          'Cada lectura pasa un control de versión — rechaza una anterior, decodifica una posterior desconocida con aviso',
+          'MIT · Go · model y gatling solo dependen de la biblioteca estándar',
         ],
       },
     },
