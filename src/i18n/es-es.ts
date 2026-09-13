@@ -207,14 +207,14 @@ export const esES: Strings = {
       },
       parsec: {
         summary:
-          'Primitivas de resultados de carga para Go — un modelo para todas las herramientas.',
+          'Primitivas de resultados de carga para Go — un modelo para todas las herramientas, empezando por Gatling.',
         detail:
-          'Un modelo canónico para los resultados de una prueba de carga, un decodificador por cada herramienta que los produce y un motor de estadísticas que responde a lo que pregunta un informe. Existe porque Gatling dejó de generar stats.json en la 3.13.5 y desde la 3.13.0 escribe simulation.log en un formato binario sin documentar que solo puede leer esa misma versión de Gatling. Todavía no hay nada implementado: el repositorio contiene el esqueleto, el backlog y un milestone por cada fuente.',
+          'Un modelo canónico para los resultados de una prueba de carga y un decodificador por cada herramienta que los produce. Existe porque Gatling dejó de generar stats.json en la 3.13.5 y desde la 3.13.0 escribe simulation.log en un formato binario sin documentar que solo puede leer esa misma versión de Gatling. Hoy lee Gatling — el log de texto antiguo y el binario nuevo, cada uno acotado al rango de versiones que un corpus de referencia verifica de verdad — y después vienen JMeter, k6, Locust y Yandex.Tank. La librería no calcula ninguna estadística: los conteos, percentiles y series quedan del lado de quien la consume, para no forzar a un único acumulador compartido a responder todas las preguntas.',
         bullets: [
-          'model/ tipos canónicos · gatling/ códecs de texto y binario · stats/ percentiles y series',
-          'Fuentes previstas: Gatling 3.11–3.15, JTL de JMeter, k6, Locust, phout de Yandex.Tank',
-          'Cada lectura pasa un control de versión — rechaza una anterior, decodifica una posterior desconocida con aviso',
-          'MIT · Go · model y gatling solo dependen de la biblioteca estándar',
+          'model/ tipos canónicos · gatling/run encuentra la ejecución · gatling/simlog la lee, en cualquier formato',
+          'Hoy: Gatling en texto 3.11.5–3.12.0 y en binario 3.13.1–3.15.1; después JMeter, k6, Locust, Yandex.Tank',
+          'Rechaza una versión anterior, decodifica una posterior desconocida con aviso — gatling.WithStrict también la rechaza',
+          'MIT · Go 1.25+ · model y gatling solo dependen de la biblioteca estándar',
         ],
       },
     },

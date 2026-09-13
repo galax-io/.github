@@ -72,7 +72,7 @@ We help teams move faster with cleaner load-testing toolchains, more reliable au
 | :-- | :-- | :-- |
 | [sbt-schema-registry-plugin](https://github.com/galax-io/sbt-schema-registry-plugin) | [![Release](https://img.shields.io/github/v/release/galax-io/sbt-schema-registry-plugin)](https://github.com/galax-io/sbt-schema-registry-plugin/releases) | SBT plugin for Confluent Schema Registry — download and generate Avro/Protobuf schemas. |
 | [docker-images](https://github.com/galax-io/docker-images) | — | Docker images for Galaxio CI/CD and local development environments. |
-| [parsec](https://github.com/galax-io/parsec) | — | Load-test result primitives in Go — one model for Gatling, JMeter, k6, Locust and Yandex.Tank results, with decoders and statistics. *(scaffold & backlog; nothing implemented yet)* |
+| [parsec](https://github.com/galax-io/parsec) | [![Release](https://img.shields.io/github/v/release/galax-io/parsec)](https://github.com/galax-io/parsec/releases) | Load-test result primitives in Go — one canonical model for Gatling, JMeter, k6, Locust and Yandex.Tank results, and the decoders that produce it. Computes no statistic — that's left to the consumer. *(pre-1.0; Gatling implemented, other tools next)* |
 
 <details>
 <summary>Archived</summary>
