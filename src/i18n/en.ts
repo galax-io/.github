@@ -201,14 +201,14 @@ export const en: Strings = {
         ],
       },
       parsec: {
-        summary: 'Load-test result primitives for Go — one model for every tool.',
+        summary: 'Load-test result primitives for Go — one model for every tool, Gatling first.',
         detail:
-          'One canonical model for the results of a load test, a decoder per tool that produces it, and a statistics engine that answers the questions a report asks. It exists because Gatling stopped generating stats.json in 3.13.5 and since 3.13.0 writes simulation.log in an undocumented binary format only the exact same Gatling version can read. Nothing is implemented yet — the repository holds the scaffold, the backlog and a milestone per source.',
+          'One canonical model for the results of a load test, and a decoder per tool that produces it. It exists because Gatling stopped generating stats.json in 3.13.5 and since 3.13.0 writes simulation.log in an undocumented binary format only the exact same Gatling version can read. It reads Gatling today — both the old text log and the new binary one, each version-gated to the range a golden corpus actually verifies — and JMeter, k6, Locust and Yandex.Tank follow. It computes no statistic: counts, percentiles and series are left to the consumer, so one shared accumulator never has to fit every question a report asks.',
         bullets: [
-          'model/ canonical types · gatling/ text and binary codecs · stats/ percentiles and series',
-          'Planned sources: Gatling 3.11–3.15, JMeter JTL, k6, Locust, Yandex.Tank phout',
-          'Every read version-gated — an older version refused, an unknown newer one decoded with a warning',
-          'MIT · Go · model and gatling depend on the standard library only',
+          'model/ canonical types · gatling/run finds the run · gatling/simlog reads it, either format',
+          'Gatling text 3.11.5–3.12.0 and binary 3.13.1–3.15.1 today; JMeter, k6, Locust, Yandex.Tank next',
+          'An older version is refused, an unknown newer one decodes with a warning — gatling.WithStrict refuses those too',
+          'MIT · Go 1.25+ · model and gatling depend on the standard library only',
         ],
       },
     },
