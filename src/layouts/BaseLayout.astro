@@ -21,15 +21,13 @@ const canonical = new URL(localeHref(locale), Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical.href} />
-    {
-      locales.map((alt) => (
-        <link
-          rel="alternate"
-          hreflang={htmlLang[alt]}
-          href={new URL(localeHref(alt), Astro.site).href}
-        />
-      ))
-    }
+    {locales.map((alt) => (
+      <link
+        rel="alternate"
+        hreflang={htmlLang[alt]}
+        href={new URL(localeHref(alt), Astro.site).href}
+      />
+    ))}
     <link
       rel="alternate"
       hreflang="x-default"
@@ -69,8 +67,11 @@ const canonical = new URL(localeHref(locale), Astro.site);
           ></path>
           <path
             fill="currentColor"
-            d="M393.37,191.39l-185.06,122,174.26-137A9.24,9.24,0,0,1,394,190.94Z"></path>
-          <path fill="currentColor" d="M381,164.21,72.2,375.41l302.33-220.3a5.57,5.57,0,0,1,6.56,9Z"
+            d="M393.37,191.39l-185.06,122,174.26-137A9.24,9.24,0,0,1,394,190.94Z"
+          ></path>
+          <path
+            fill="currentColor"
+            d="M381,164.21,72.2,375.41l302.33-220.3a5.57,5.57,0,0,1,6.56,9Z"
           ></path>
           <path
             fill="currentColor"

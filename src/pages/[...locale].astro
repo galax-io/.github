@@ -39,18 +39,18 @@ const groups = productGroups.map((group) => ({
       <div class="topbar-inner">
         <a href={localeHref(locale)} class="brand" aria-label="Galaxio">
           <BrandMark class="brand-mark" />
-          <span class="brand-name"
-            >Galax<em>io</em><span class="sep">·</span><span class="team">Team</span></span
-          >
+          <span class="brand-name">
+            Galax<em>io</em>
+            <span class="sep">·</span>
+            <span class="team">Team</span>
+          </span>
         </a>
         <nav class="primary">
-          {
-            navLinks.map((link) => (
-              <a href={link.href} data-num={link.num}>
-                {t.nav[link.key]}
-              </a>
-            ))
-          }
+          {navLinks.map((link) => (
+            <a href={link.href} data-num={link.num}>
+              {t.nav[link.key]}
+            </a>
+          ))}
         </nav>
         <div class="topbar-actions">
           <LangSwitcher current={locale} label={t.language} />
@@ -72,27 +72,39 @@ const groups = productGroups.map((group) => ({
     <!-- ═══════════════════ HERO ═══════════════════ -->
     <section class="hero">
       <div class="hero-coord-row">
-        <div class="sig">{t.hero.est} <span class="mono">2018</span></div>
-        <div><span class="blink"></span>{t.hero.status}</div>
+        <div class="sig">
+          {t.hero.est} <span class="mono">2018</span>
+        </div>
+        <div>
+          <span class="blink"></span>
+          {t.hero.status}
+        </div>
         <div>v3.0 · ECMA / 2026</div>
       </div>
 
       <div class="hero-stage">
         <div class="hero-text">
           <div class="hero-eyebrow">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"
-              ><circle cx="6" cy="6" r="5"></circle><circle cx="6" cy="6" r="2" fill="currentColor"
-              ></circle></svg
-            >
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="6" cy="6" r="5"></circle>
+              <circle cx="6" cy="6" r="2" fill="currentColor"></circle>
+            </svg>
             {t.hero.eyebrow}
           </div>
           <h1 class="hero-headline">
-            <span class="line"><Emphasis text={t.hero.headline[0]} as="span" class="blue" /></span>
+            <span class="line">
+              <Emphasis text={t.hero.headline[0]} as="span" class="blue" />
+            </span>
             <span class="line outlined">{t.hero.headline[1]}</span>
             <span class="line">{t.hero.headline[2]}</span>
-            <span class="line">{t.hero.headline[3]}<span class="dot"></span></span>
+            <span class="line">
+              {t.hero.headline[3]}
+              <span class="dot"></span>
+            </span>
           </h1>
-          <p class="hero-lede"><Emphasis text={t.hero.lede} /></p>
+          <p class="hero-lede">
+            <Emphasis text={t.hero.lede} />
+          </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#products">
               {t.hero.ctaExplore}
@@ -103,8 +115,10 @@ const groups = productGroups.map((group) => ({
                 stroke="currentColor"
                 stroke-width="1.8"
                 stroke-linecap="round"
-                ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
               >
+                <path d="M2.5 9.5L9.5 2.5"></path>
+                <path d="M4 2.5h5.5v5.5"></path>
+              </svg>
             </a>
             <a
               class="btn btn-ghost"
@@ -120,8 +134,10 @@ const groups = productGroups.map((group) => ({
                 stroke="currentColor"
                 stroke-width="1.8"
                 stroke-linecap="round"
-                ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
               >
+                <path d="M2.5 9.5L9.5 2.5"></path>
+                <path d="M4 2.5h5.5v5.5"></path>
+              </svg>
             </a>
           </div>
         </div>
@@ -161,7 +177,8 @@ const groups = productGroups.map((group) => ({
               y2="14"
               stroke="currentColor"
               stroke-width="1"
-              opacity="0.3"></line>
+              opacity="0.3"
+            ></line>
             <line
               x1="200"
               y1="386"
@@ -169,7 +186,8 @@ const groups = productGroups.map((group) => ({
               y2="400"
               stroke="currentColor"
               stroke-width="1"
-              opacity="0.3"></line>
+              opacity="0.3"
+            ></line>
             <line
               x1="0"
               y1="200"
@@ -177,7 +195,8 @@ const groups = productGroups.map((group) => ({
               y2="200"
               stroke="currentColor"
               stroke-width="1"
-              opacity="0.3"></line>
+              opacity="0.3"
+            ></line>
             <line
               x1="386"
               y1="200"
@@ -185,7 +204,8 @@ const groups = productGroups.map((group) => ({
               y2="200"
               stroke="currentColor"
               stroke-width="1"
-              opacity="0.3"></line>
+              opacity="0.3"
+            ></line>
           </svg>
 
           <!-- center brand mark -->
@@ -193,7 +213,9 @@ const groups = productGroups.map((group) => ({
           <BrandMark class="orbit-mark" aria-hidden="true" />
 
           <!-- labels positioned around -->
-          {orbitLabels.map((label, i) => <span class={`orbit-label l${i + 1}`}>{label}</span>)}
+          {orbitLabels.map((label, i) => (
+            <span class={`orbit-label l${i + 1}`}>{label}</span>
+          ))}
         </div>
       </div>
     </section>
@@ -201,18 +223,16 @@ const groups = productGroups.map((group) => ({
     <!-- ═══════════════════ MARQUEE ═══════════════════ -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        {
-          [0, 1].map(() => (
-            <span class="group">
-              {t.marquee.map((item) => (
-                <>
-                  <span>{item}</span>
-                  <BrandMark class="marquee-mark" />
-                </>
-              ))}
-            </span>
-          ))
-        }
+        {[0, 1].map(() => (
+          <span class="group">
+            {t.marquee.map((item) => (
+              <>
+                <span>{item}</span>
+                <BrandMark class="marquee-mark" />
+              </>
+            ))}
+          </span>
+        ))}
       </div>
     </div>
 
@@ -220,54 +240,56 @@ const groups = productGroups.map((group) => ({
     <section class="block" id="products">
       <header class="section-head">
         <div class="section-tag">
-          <span class="sig"><BrandMark class="mark" /> {t.products.tag}</span>
-          <span class="num">§ <b>01</b> / 04</span>
+          <span class="sig">
+            <BrandMark class="mark" /> {t.products.tag}
+          </span>
+          <span class="num">
+            § <b>01</b> / 04
+          </span>
         </div>
-        <h2 class="section-title"><Emphasis text={t.products.title} /></h2>
+        <h2 class="section-title">
+          <Emphasis text={t.products.title} />
+        </h2>
         <p class="section-kicker">{t.products.kicker}</p>
       </header>
 
       <div class="products" id="productsList" data-label-copied={t.products.copied}>
-        {
-          groups.map((group) => (
-            <section class="product-group" id={`group-${group.id}`}>
-              <header class="product-group-head">
-                <h3 class="product-group-label">
-                  <BrandMark class="gmark" />
-                  {group.label}
-                  <span class="product-group-count">
-                    {String(group.items.length).padStart(2, '0')}
-                  </span>
-                </h3>
-                <span class="product-group-note">{group.note}</span>
-              </header>
-              <div class="products">
-                {group.items.map(({ product, index }) => (
-                  <ProductCard
-                    product={product}
-                    copy={t.products.items[product.name]}
-                    index={index}
-                    open={index === 0}
-                    strings={t.products}
-                  />
-                ))}
-              </div>
-            </section>
-          ))
-        }
+        {groups.map((group) => (
+          <section class="product-group" id={`group-${group.id}`}>
+            <header class="product-group-head">
+              <h3 class="product-group-label">
+                <BrandMark class="gmark" />
+                {group.label}
+                <span class="product-group-count">
+                  {String(group.items.length).padStart(2, '0')}
+                </span>
+              </h3>
+              <span class="product-group-note">{group.note}</span>
+            </header>
+            <div class="products">
+              {group.items.map(({ product, index }) => (
+                <ProductCard
+                  product={product}
+                  copy={t.products.items[product.name]}
+                  index={index}
+                  open={index === 0}
+                  strings={t.products}
+                />
+              ))}
+            </div>
+          </section>
+        ))}
         <section class="archived-note">
           <span class="archived-label">{t.products.archived}</span>
           <ul>
-            {
-              archived.map((repo) => (
-                <li>
-                  <a href={repo.repo} target="_blank" rel="noreferrer">
-                    {repo.name}
-                  </a>
-                  <span>{t.products.archivedNotes[repo.name]}</span>
-                </li>
-              ))
-            }
+            {archived.map((repo) => (
+              <li>
+                <a href={repo.repo} target="_blank" rel="noreferrer">
+                  {repo.name}
+                </a>
+                <span>{t.products.archivedNotes[repo.name]}</span>
+              </li>
+            ))}
           </ul>
         </section>
       </div>
@@ -277,42 +299,46 @@ const groups = productGroups.map((group) => ({
     <section class="block" id="community">
       <header class="section-head">
         <div class="section-tag">
-          <span class="sig"><BrandMark class="mark" /> {t.community.tag}</span>
-          <span class="num">§ <b>02</b> / 04</span>
+          <span class="sig">
+            <BrandMark class="mark" /> {t.community.tag}
+          </span>
+          <span class="num">
+            § <b>02</b> / 04
+          </span>
         </div>
-        <h2 class="section-title"><Emphasis text={t.community.title} /></h2>
+        <h2 class="section-title">
+          <Emphasis text={t.community.title} />
+        </h2>
         <p class="section-kicker">{t.community.kicker}</p>
       </header>
 
       <div class="community-grid">
         <div class="contribute">
-          {
-            t.community.cards.map((card, i) => (
-              <a
-                class="contrib"
-                href={i === 3 ? 'https://t.me/qa_load' : 'https://github.com/galax-io'}
-                target="_blank"
-                rel="noreferrer"
+          {t.community.cards.map((card, i) => (
+            <a
+              class="contrib"
+              href={i === 3 ? 'https://t.me/qa_load' : 'https://github.com/galax-io'}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="contrib-num">{card.num}</span>
+              <div>
+                <h3>{card.title}</h3>
+                <p>{card.body}</p>
+              </div>
+              <svg
+                class="contrib-arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
               >
-                <span class="contrib-num">{card.num}</span>
-                <div>
-                  <h3>{card.title}</h3>
-                  <p>{card.body}</p>
-                </div>
-                <svg
-                  class="contrib-arrow"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                >
-                  <path d="M5 19L19 5" />
-                  <path d="M8 5h11v11" />
-                </svg>
-              </a>
-            ))
-          }
+                <path d="M5 19L19 5" />
+                <path d="M8 5h11v11" />
+              </svg>
+            </a>
+          ))}
         </div>
 
         <a class="tg-panel" href="https://t.me/qa_load" target="_blank" rel="noreferrer">
@@ -327,26 +353,31 @@ const groups = productGroups.map((group) => ({
           </svg>
           <span class="tg-eye">{t.community.tg.eye}</span>
           <div>
-            <h3 class="tg-headline"><Emphasis text={t.community.tg.headline} /></h3>
-            <p class="tg-body" style="margin-top:24px;">{t.community.tg.body}</p>
+            <h3 class="tg-headline">
+              <Emphasis text={t.community.tg.headline} />
+            </h3>
+            <p class="tg-body" style="margin-top:24px;">
+              {t.community.tg.body}
+            </p>
           </div>
           <div class="tg-stats">
             <div class="tg-stat">
-              <span class="num">10k+</span><span class="lbl">{t.community.tg.members}</span>
+              <span class="num">10k+</span>
+              <span class="lbl">{t.community.tg.members}</span>
             </div>
             <div class="tg-stat">
-              <span class="num">24/7</span><span class="lbl">{t.community.tg.active}</span>
+              <span class="num">24/7</span>
+              <span class="lbl">{t.community.tg.active}</span>
             </div>
             <div class="tg-stat">
-              <span class="num">RU·EN·ES</span><span class="lbl">{t.community.tg.languages}</span>
+              <span class="num">RU·EN·ES</span>
+              <span class="lbl">{t.community.tg.languages}</span>
             </div>
           </div>
           <span class="tg-cta">
-            <svg viewBox="0 0 24 24" fill="currentColor"
-              ><path
-                d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"
-              ></path></svg
-            >
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"></path>
+            </svg>
             t.me/qa_load
             <span class="handle">↗</span>
           </span>
@@ -370,11 +401,17 @@ const groups = productGroups.map((group) => ({
       <div class="manifesto-inner">
         <div>
           <div class="manifesto-tag">{t.manifesto.tag}</div>
-          <h2><Emphasis text={t.manifesto.title} /></h2>
+          <h2>
+            <Emphasis text={t.manifesto.title} />
+          </h2>
         </div>
         <div class="manifesto-body">
-          <p><Emphasis text={t.manifesto.p1} as="b" /></p>
-          <p><Emphasis text={t.manifesto.p2} as="b" /></p>
+          <p>
+            <Emphasis text={t.manifesto.p1} as="b" />
+          </p>
+          <p>
+            <Emphasis text={t.manifesto.p2} as="b" />
+          </p>
         </div>
       </div>
       <div class="manifesto-mark" aria-hidden="true">
@@ -386,9 +423,13 @@ const groups = productGroups.map((group) => ({
     <section class="priority" id="priority">
       <div>
         <div class="section-tag" style="margin-bottom:24px;">
-          <span class="sig"><BrandMark class="mark" /> {t.priority.tag}</span>
+          <span class="sig">
+            <BrandMark class="mark" /> {t.priority.tag}
+          </span>
         </div>
-        <h2><Emphasis text={t.priority.title} /></h2>
+        <h2>
+          <Emphasis text={t.priority.title} />
+        </h2>
       </div>
       <div>
         <p>{t.priority.body}</p>
@@ -401,8 +442,10 @@ const groups = productGroups.map((group) => ({
             stroke="currentColor"
             stroke-width="1.8"
             stroke-linecap="round"
-            ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
           >
+            <path d="M2.5 9.5L9.5 2.5"></path>
+            <path d="M4 2.5h5.5v5.5"></path>
+          </svg>
         </a>
       </div>
     </section>
@@ -420,49 +463,61 @@ const groups = productGroups.map((group) => ({
         <div>
           <h4>{t.footer.sections}</h4>
           <ul>
-            <li><a href="#products">{t.nav.products}</a></li>
-            <li><a href="#community">{t.nav.community}</a></li>
-            <li><a href="#manifesto">{t.nav.origin}</a></li>
+            <li>
+              <a href="#products">{t.nav.products}</a>
+            </li>
+            <li>
+              <a href="#community">{t.nav.community}</a>
+            </li>
+            <li>
+              <a href="#manifesto">{t.nav.origin}</a>
+            </li>
           </ul>
         </div>
         <div>
           <h4>{t.footer.repositories}</h4>
           <ul>
             <li>
-              <a href="https://github.com/galax-io/galaxio-cli" target="_blank" rel="noreferrer"
-                >galaxio-cli</a
-              >
+              <a href="https://github.com/galax-io/galaxio-cli" target="_blank" rel="noreferrer">
+                galaxio-cli
+              </a>
             </li>
             <li>
-              <a href="https://github.com/galax-io/ai-plugins" target="_blank" rel="noreferrer"
-                >ai-plugins</a
-              >
+              <a href="https://github.com/galax-io/ai-plugins" target="_blank" rel="noreferrer">
+                ai-plugins
+              </a>
             </li>
             <li>
               <a
                 href="https://github.com/galax-io/gatling-kafka-plugin"
                 target="_blank"
-                rel="noreferrer">gatling-kafka-plugin</a
+                rel="noreferrer"
               >
+                gatling-kafka-plugin
+              </a>
             </li>
             <li>
               <a
                 href="https://github.com/galax-io/gatling-picatinny"
                 target="_blank"
-                rel="noreferrer">gatling-picatinny</a
+                rel="noreferrer"
               >
+                gatling-picatinny
+              </a>
             </li>
             <li>
               <a
                 href="https://github.com/galax-io/templates-gatling"
                 target="_blank"
-                rel="noreferrer">templates-gatling</a
+                rel="noreferrer"
               >
+                templates-gatling
+              </a>
             </li>
             <li>
-              <a href="https://github.com/galax-io" target="_blank" rel="noreferrer"
-                >{t.footer.allOnGitHub}</a
-              >
+              <a href="https://github.com/galax-io" target="_blank" rel="noreferrer">
+                {t.footer.allOnGitHub}
+              </a>
             </li>
           </ul>
         </div>
@@ -470,21 +525,27 @@ const groups = productGroups.map((group) => ({
           <h4>{t.footer.community}</h4>
           <ul>
             <li>
-              <a href="https://t.me/qa_load" target="_blank" rel="noreferrer">{t.footer.telegram}</a
-              >
+              <a href="https://t.me/qa_load" target="_blank" rel="noreferrer">
+                {t.footer.telegram}
+              </a>
             </li>
             <li>
-              <a href="https://github.com/galax-io" target="_blank" rel="noreferrer"
-                >{t.footer.githubOrg}</a
-              >
+              <a href="https://github.com/galax-io" target="_blank" rel="noreferrer">
+                {t.footer.githubOrg}
+              </a>
             </li>
-            <li><a href="mailto:hello@galaxio.org">hello@galaxio.org</a></li>
+            <li>
+              <a href="mailto:hello@galaxio.org">hello@galaxio.org</a>
+            </li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span><span class="blue-dot"></span>{t.footer.copyright}</span>
+        <span>
+          <span class="blue-dot"></span>
+          {t.footer.copyright}
+        </span>
         <span>{t.footer.tagline}</span>
       </div>
     </footer>

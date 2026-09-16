@@ -14,7 +14,9 @@ const { lang, codeId, tokens, copyLabel } = Astro.props;
 <div class="code-frame">
   <div class="code-head">
     <span class="label">{lang}</span>
-    <button class="copy-btn" type="button" data-copy={codeId}>{copyLabel}</button>
+    <button class="copy-btn" type="button" data-copy={codeId}>
+      {copyLabel}
+    </button>
   </div>
   <div class="code-body">
     <pre><code id={codeId}>{tokens.map(([cls, txt]) => (cls ? <span class={`tk-${cls}`}>{txt}</span> : txt))}</code></pre>

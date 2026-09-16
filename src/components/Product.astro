@@ -18,7 +18,7 @@ const num = String(index + 1).padStart(2, '0');
 const codeId = `code-${index}`;
 ---
 
-<article class="product" data-idx={index} {...open ? { open: true } : {}}>
+<article class="product" data-idx={index} {...(open ? { open: true } : {})}>
   <div class="product-row" role="button" tabindex="0" aria-expanded={open ? 'true' : 'false'}>
     <div class="product-idx">R / {num}</div>
     <div class="product-orbit">
@@ -39,8 +39,10 @@ const codeId = `code-${index}`;
         fill="none"
         stroke="currentColor"
         stroke-width="1.6"
-        stroke-linecap="round"><path d="M7 1v12M1 7h12"></path></svg
+        stroke-linecap="round"
       >
+        <path d="M7 1v12M1 7h12"></path>
+      </svg>
     </div>
   </div>
   <div class="product-body">
@@ -51,7 +53,9 @@ const codeId = `code-${index}`;
           <p>{copy.detail}</p>
           <h4>{strings.highlights}</h4>
           <ul>
-            {copy.bullets.map((bullet) => <li>{bullet}</li>)}
+            {copy.bullets.map((bullet) => (
+              <li>{bullet}</li>
+            ))}
           </ul>
           <div class="product-links">
             <a class="plink primary" href={product.readme} target="_blank" rel="noreferrer">
@@ -64,12 +68,14 @@ const codeId = `code-${index}`;
                 stroke="currentColor"
                 stroke-width="1.8"
                 stroke-linecap="round"
-                ><path d="M2.5 9.5L9.5 2.5"></path><path d="M4 2.5h5.5v5.5"></path></svg
               >
+                <path d="M2.5 9.5L9.5 2.5"></path>
+                <path d="M4 2.5h5.5v5.5"></path>
+              </svg>
             </a>
-            <a class="plink" href={product.repo} target="_blank" rel="noreferrer"
-              >{strings.repository}</a
-            >
+            <a class="plink" href={product.repo} target="_blank" rel="noreferrer">
+              {strings.repository}
+            </a>
           </div>
         </div>
         <div>
