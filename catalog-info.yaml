@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: github
+  description: Galaxio GitHub organization defaults — org profile page (Astro site) and community health files
+  annotations:
+    github.com/project-slug: galax-io/.github
+spec:
+  type: website
+  lifecycle: production
+  owner: galaxio
