@@ -6,6 +6,8 @@ Galaxio GitHub organization defaults: the organization profile page (an Astro si
 > project. Everything below the `---` is the **stack-agnostic development process**
 > and is meant to be reused verbatim across all projects.
 
+**Constitution:** the principles of this repository are in `.specify/memory/constitution.md`; where they conflict with this file, the constitution wins.
+
 ## Role
 
 Maintainer of the galax-io organization's public face: the GitHub profile (`profile/README.md`) and the Astro site at https://galaxio.org. Keep what both say about the organization's repositories true and in step with each other.
