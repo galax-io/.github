@@ -10,3 +10,8 @@ profile/
 # rendered from the spec-kit-galaxio-bootstrap template — kept as rendered, so `copier update` merges cleanly
 AGENTS.md
 CLAUDE.md
+
+# the shared Spec Kit kit — byte for byte the template's (scripts/check-speckit.sh)
+.specify/
+.claude/skills/
+.agents/skills/
