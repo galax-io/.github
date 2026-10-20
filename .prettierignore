@@ -6,3 +6,7 @@ package-lock.json
 # org-facing content, not site source — left as authored
 README.md
 profile/
+
+# rendered from the spec-kit-galaxio-bootstrap template — kept as rendered, so `copier update` merges cleanly
+AGENTS.md
+CLAUDE.md
