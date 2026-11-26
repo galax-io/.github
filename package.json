@@ -15,11 +15,11 @@
     "validate": "npm run format:check && npm run typecheck && npm run build"
   },
   "dependencies": {
-    "astro": "^7.4.7"
+    "astro": "^7.4.13"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "prettier": "^3.9.10",
+    "prettier": "^3.10.1",
     "prettier-plugin-astro": "^1.1.2",
     "typescript": "^6.0.3"
   }
